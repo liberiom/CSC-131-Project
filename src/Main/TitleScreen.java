@@ -21,7 +21,7 @@ public class TitleScreen {
 	
 	public TitleScreen() {
 		this.isDisplayed = true;
-		logo = new spriteInfo(new Vector2D(585, 50), "logo");
+		logo = new spriteInfo(new Vector2D(485, 50), "logo");
 		rulesWord = "Rules:";
 		rulesWordCoords = new Vector2D(logo.getCoords().getX() - 50, logo.getCoords().getY() + LOGO_HEIGHT); 
 		ruleOne = "1. There are numbers in the table which range from 1 to 8.";
