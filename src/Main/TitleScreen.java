@@ -28,9 +28,9 @@ public class TitleScreen {
 		ruleOneCoords = new Vector2D(rulesWordCoords.getX(), rulesWordCoords.getY() + LINE_SPACING);
 		ruleTwo = "2. The goal of the game is to find 2 pairs of the same number.";
 		ruleTwoCoords = new Vector2D(ruleOneCoords.getX(), ruleOneCoords.getY() + LINE_SPACING);
-		ruleThree = "3. You can only select between 1 to 4 for both the row and the column!";
+		ruleThree = "3. You can only select between 1 to 4 for both the row and the column";
 		ruleThreeCoords = new Vector2D(ruleTwoCoords.getX(), ruleTwoCoords.getY() + LINE_SPACING);
-		promptContinue = "Press Enter to Start Memory Game";
+		promptContinue = "Good Luck! Press Enter to Start Memory Game";
 		promptContinueCoords = new Vector2D(ruleThreeCoords.getX(), ruleThreeCoords.getY() + LINE_SPACING);
 		KeyProcessor.enterKeyEnabled = true;
 	}

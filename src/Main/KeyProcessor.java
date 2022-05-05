@@ -35,6 +35,9 @@ public class KeyProcessor{
 				if (Main.titleScreen.getVisibility() == true) {
 					Main.titleScreen.setVisibility(false);
 					enterKeyEnabled = false;
+					/*
+					 * TODO: Put shuffle method here
+					 */
 				}
 			}
 			break;
