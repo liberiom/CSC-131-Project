@@ -57,6 +57,7 @@ public class Main{
 	 * Static methods are below
 	 */
 	public static TitleScreen titleScreen; 
+	public static Board board;
 	private static Color white = new Color(255, 255, 255);
 	
 	// End Static fields...
@@ -69,7 +70,7 @@ public class Main{
 	/* This is your access to things BEFORE the game loop starts */
 	public static void start(){
 		titleScreen = new TitleScreen();
-		
+		board = new Board();
 	} 
 	
 	/* This is your access to the "game loop" (It is a "callback" method from the Control class (do NOT modify that class!))*/
@@ -81,6 +82,10 @@ public class Main{
 			ctrl.drawString(titleScreen.getRuleTwoCoords().getX(), titleScreen.getRuleTwoCoords().getY(), titleScreen.getRuleTwo(), white);
 			ctrl.drawString(titleScreen.getRuleThreeCoords().getX(), titleScreen.getRuleThreeCoords().getY(), titleScreen.getRuleThree(), white);
 			ctrl.drawString(titleScreen.getPromptContinueCoords().getX(), titleScreen.getPromptContinueCoords().getY(), titleScreen.getPromptContinue(), white);
+		}
+		
+		if (board.getVisibility()) {
+			ctrl.addSpriteToFrontBuffer(board.getSprite().getCoords().getX(), board.getSprite().getCoords().getY(), board.getSprite().getTag());
 		}
 	}
 	

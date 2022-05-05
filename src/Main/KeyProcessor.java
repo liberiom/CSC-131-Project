@@ -34,10 +34,12 @@ public class KeyProcessor{
 			if (enterKeyEnabled) {
 				if (Main.titleScreen.getVisibility() == true) {
 					Main.titleScreen.setVisibility(false);
+					Main.board.setVisibility(true);
 					enterKeyEnabled = false;
 					/*
 					 * TODO: Put shuffle method here
 					 */
+					
 				}
 			}
 			break;
