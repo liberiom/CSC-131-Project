@@ -29,6 +29,7 @@ public class TitleScreen {
 		ruleThree = "3. You can only select between 1 to 4 for both the row and the column!";
 		ruleThreeCoords = new Vector2D(ruleTwoCoords.getX(), ruleTwoCoords.getY() + LINE_SPACING);
 		promptContinue = "Press Enter to Continue";
+		promptContinueCoords = new Vector2D(ruleThreeCoords.getX(), ruleThreeCoords.getY() + LINE_SPACING);
 		KeyProcessor.enterKeyEnabled = true;
 	}
 	
