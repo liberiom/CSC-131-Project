@@ -56,6 +56,8 @@ public class Main{
 	/*
 	 * Static methods are below
 	 */
+	public static TitleScreen titleScreen; 
+	private static Color white = new Color(255, 255, 255);
 	
 	// End Static fields...
 	
@@ -66,12 +68,20 @@ public class Main{
 	
 	/* This is your access to things BEFORE the game loop starts */
 	public static void start(){
+		titleScreen = new TitleScreen();
 		
 	} 
 	
 	/* This is your access to the "game loop" (It is a "callback" method from the Control class (do NOT modify that class!))*/
 	public static void update(Control ctrl) {
-		
+		if (titleScreen.getVisibility() == true) {
+			ctrl.addSpriteToFrontBuffer(titleScreen.getLogo().getCoords().getX(), titleScreen.getLogo().getCoords().getY(), titleScreen.getLogo().getTag());
+			ctrl.drawString(titleScreen.getRulesWordCoords().getX(), titleScreen.getRulesWordCoords().getY(), titleScreen.getRulesWord(), white);
+			ctrl.drawString(titleScreen.getRuleOneCoords().getX(), titleScreen.getRuleOneCoords().getY(), titleScreen.getRuleOne(), white);
+			ctrl.drawString(titleScreen.getRuleTwoCoords().getX(), titleScreen.getRuleTwoCoords().getY(), titleScreen.getRuleTwo(), white);
+			ctrl.drawString(titleScreen.getRuleThreeCoords().getX(), titleScreen.getRuleThreeCoords().getY(), titleScreen.getRuleThree(), white);
+			ctrl.drawString(titleScreen.getPromptContinueCoords().getX(), titleScreen.getPromptContinueCoords().getY(), titleScreen.getPromptContinue(), white);
+		}
 	}
 	
 	

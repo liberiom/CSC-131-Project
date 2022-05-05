@@ -8,7 +8,8 @@ import timer.stopWatchX;
 public class KeyProcessor{
 	// Static Fields
 	private static char last = ' ';			// For debouncing purposes
-	private static stopWatchX sw = new stopWatchX(50);
+	private static stopWatchX sw = new stopWatchX(200);
+	public static boolean enterKeyEnabled;
 	
 	// Static Method(s)
 	public static void processKey(char key){
@@ -26,6 +27,16 @@ public class KeyProcessor{
 			break;
 		case '1':
 			System.out.println("Number has been pressed");
+			break;
+			
+		case '=':
+			System.out.println("Enter key has been pressed");
+			if (enterKeyEnabled) {
+				if (Main.titleScreen.getVisibility() == true) {
+					Main.titleScreen.setVisibility(false);
+					enterKeyEnabled = false;
+				}
+			}
 			break;
 			
 		/*
