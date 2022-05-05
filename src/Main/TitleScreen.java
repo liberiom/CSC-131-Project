@@ -17,11 +17,13 @@ public class TitleScreen {
 	private Vector2D ruleThreeCoords;
 	private boolean isDisplayed;
 	private final int LINE_SPACING = 100;
+	private final int LOGO_HEIGHT = 421;
+	
 	public TitleScreen() {
 		this.isDisplayed = true;
-		logo = new spriteInfo(new Vector2D(700, 700), "logo");
+		logo = new spriteInfo(new Vector2D(685, 50), "logo");
 		rulesWord = "Rules:";
-		rulesWordCoords = new Vector2D(logo.getCoords().getX() - 500, logo.getCoords().getY() + LINE_SPACING);
+		rulesWordCoords = new Vector2D(logo.getCoords().getX() - 50, logo.getCoords().getY() + LOGO_HEIGHT); 
 		ruleOne = "1. There are numbers in the table which range from 1 to 8.";
 		ruleOneCoords = new Vector2D(rulesWordCoords.getX(), rulesWordCoords.getY() + LINE_SPACING);
 		ruleTwo = "2. The goal of the game is to find 2 pairs of the same number.";
