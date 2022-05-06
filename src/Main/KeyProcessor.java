@@ -89,10 +89,10 @@ public class KeyProcessor{
 					enterKeyEnabled = false;
 					Main.board.shuffle();
 				} else { // Responsible for throwing the user back to the first part
-					Main.board.makeAllMessagesDisappear();
 					if (Main.board.isHardLuckMessageVisible()) {
 						Main.board.coverBoth(Main.board.getFirstColumn(), Main.board.getFirstRow(), Main.board.getSecondColumn(), Main.board.getSecondRow());
 					}
+					Main.board.makeAllMessagesDisappear();
 					// throw back to first
 					Main.board.setEnterStage(false);
 					Main.board.setFirstQuestion(true);
