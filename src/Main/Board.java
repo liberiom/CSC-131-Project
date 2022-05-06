@@ -106,6 +106,7 @@ public class Board {
 					isSecondQuestion = false;
 					isFirstQuestion = true;
 					isFirstRow = true;
+					KeyProcessor.enterKeyEnabled = false;
 				}
 				if (this.match(firstRow, firstColumn, secondRow, secondColumn)) {
 					if (this.didPlayerWinGame()) {
