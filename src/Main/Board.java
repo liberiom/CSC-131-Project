@@ -197,10 +197,13 @@ public class Board {
 	public void setFirstQuestion(boolean isFirstQuestion) {
 		this.isFirstQuestion = isFirstQuestion;
 	}
-
+	
+	/*
+	 * Constructor is here!!!
+	 */
 	public Board() {
 		// Question-related booleans
-		isFirstQuestion = true;
+		isFirstQuestion = false;
 		isFirstRow = true;
 		isFirstColumn = false;
 		isSecondQuestion = false;

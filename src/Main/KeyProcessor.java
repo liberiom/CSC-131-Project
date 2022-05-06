@@ -27,18 +27,22 @@ public class KeyProcessor{
 			break;
 		case '1':
 			Main.board.recordAnswerAndMoveOn(1);
+			Main.board.makeAllMessagesDisappear();
 			break;
 		
 		case '2':
 			Main.board.recordAnswerAndMoveOn(2);
+			Main.board.makeAllMessagesDisappear();
 			break;
 			
 		case '3':
 			Main.board.recordAnswerAndMoveOn(3);
+			Main.board.makeAllMessagesDisappear();
 			break;
 			
 		case '4':
 			Main.board.recordAnswerAndMoveOn(4);
+			Main.board.makeAllMessagesDisappear();
 			break;
 			
 		case '5':
@@ -70,6 +74,7 @@ public class KeyProcessor{
 				if (Main.titleScreen.getVisibility() == true) {
 					Main.titleScreen.setVisibility(false);
 					Main.board.setVisibility(true);
+					Main.board.setFirstQuestion(true); // Prevents the question from popping up in the title screen
 					enterKeyEnabled = false;
 					Main.board.shuffle();
 				}
