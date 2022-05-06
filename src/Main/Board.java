@@ -49,6 +49,8 @@ public class Board {
 		rowNumberFour = new Vector2D(this.rowNumberThree.getX() + ROW_SPACING, this.rowNumberThree.getY());
 		columnNumberFour = new Vector2D(this.columnNumberThree.getX(), this.columnNumberThree.getY() + COLUMN_SPACING);
 		
+		this.cards = new Card[4][4];
+		
 		this.cards[0][0] = new Card(-100, new Vector2D(CARD_REFERENCE_X_COORD, CARD_REFERENCE_Y_COORD));
 		
 		for (int i = 1; i < 4; i++) { // Columns
