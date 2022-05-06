@@ -54,7 +54,7 @@ public class Main{
 			// Display numbers
 			ctrl.drawString(board.getRowNumberOne().getX(), board.getRowNumberOne().getY(), "1", white);
 			ctrl.drawString(board.getColumnNumberOne().getX(), board.getColumnNumberOne().getY(), "1", white);
-			ctrl.drawString(board.getRowNumberTwo().getX(), board.getColumnNumberTwo().getY(), "2", white);
+			ctrl.drawString(board.getRowNumberTwo().getX(), board.getRowNumberTwo().getY(), "2", white);
 			ctrl.drawString(board.getColumnNumberTwo().getX(), board.getColumnNumberTwo().getY(), "2", white);
 			ctrl.drawString(board.getRowNumberThree().getX(), board.getRowNumberThree().getY(), "3", white);
 			ctrl.drawString(board.getColumnNumberThree().getX(), board.getColumnNumberThree().getY(), "3", white);
