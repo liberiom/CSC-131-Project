@@ -106,6 +106,7 @@ public class Board {
 			// Go to next part
 			isFirstColumn = false;
 			isFirstRow = true;
+			isFacingUpAlreadyMessageVisible = false;
 		} else if (isFirstQuestion && isFirstRow) {
 			firstRow = answer;
 			// If card is already up go back to the last part
@@ -114,7 +115,6 @@ public class Board {
 				isFirstColumn = true;
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
-				isFacingUpAlreadyMessageVisible = false;
 				this.uncover(firstColumn, firstRow);
 				isFirstQuestion = false;
 				isFirstRow = false;
@@ -127,6 +127,7 @@ public class Board {
 			// Go to next part
 			isSecondColumn = false;
 			isSecondRow = true;
+			isFacingUpAlreadyMessageVisible = false; 
 		} else if (isSecondQuestion && isSecondRow) {
 			secondRow = answer;
 			// If card is already up go back to the last part
@@ -135,7 +136,6 @@ public class Board {
 				isSecondColumn = true;
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
-				isFacingUpAlreadyMessageVisible = false; 
 				this.uncover(secondColumn, secondRow);
 				isEnterStage = true;
 				isSecondQuestion = false; // might not be necessary
