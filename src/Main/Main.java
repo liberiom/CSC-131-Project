@@ -132,7 +132,7 @@ public class Main{
 			ctrl.drawString(519, 833, "What is the First Card you would like to see? Please type the column number", white);
 		}
 		
-		if (board.isSecondColumn() && board.isSecondRow()) {
+		if (board.isSecondQuestion() && board.isSecondRow()) {
 			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the row number", white);
 		} else if (board.isSecondQuestion() && board.isSecondColumn()) {
 			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the column number", white);
