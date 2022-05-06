@@ -173,16 +173,16 @@ public class Board {
 	}
 	
 	private void swap(int iterations) {
-		int tempNumber = 0;
-		Card tempCard = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
-		Card tempCard2 = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
+		int tempNumber;
+		Card tempCard;
+		Card tempCard2;
 		for (int i = 0; i < iterations; i++) {
+			tempNumber = 0;
+			tempCard = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
+			tempCard2 = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
 			tempNumber = tempCard.getNumber();
 			tempCard.setNumber(tempCard2.getNumber());
 			tempCard2.setNumber(tempNumber);
 		}
 	}
-	
-	
-	
 }
