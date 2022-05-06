@@ -34,6 +34,38 @@ public class Board {
 	private boolean isSecondQuestion;
 	private boolean isSecondRow;
 	private boolean isSecondColumn;
+	public int getFirstRow() {
+		return firstRow;
+	}
+
+	public int getFirstColumn() {
+		return firstColumn;
+	}
+
+	public int getSecondRow() {
+		return secondRow;
+	}
+
+	public int getSecondColumn() {
+		return secondColumn;
+	}
+
+	public void setFirstRow(int firstRow) {
+		this.firstRow = firstRow;
+	}
+
+	public void setFirstColumn(int firstColumn) {
+		this.firstColumn = firstColumn;
+	}
+
+	public void setSecondRow(int secondRow) {
+		this.secondRow = secondRow;
+	}
+
+	public void setSecondColumn(int secondColumn) {
+		this.secondColumn = secondColumn;
+	}
+
 	private boolean isEnterStage;
 	private int firstRow = -1;
 	private int firstColumn = -1;
@@ -116,7 +148,6 @@ public class Board {
 				// no need to cover up here, matches
 			} else {
 				isHardLuckMessageVisible = true;
-				this.coverBoth(firstColumn, firstRow, secondColumn, secondRow);
 			}
 		}
 	}
@@ -141,7 +172,7 @@ public class Board {
 		return this.cards[column - 1][row - 1].isShowingNumber();
 	}
 	
-	private void coverBoth(int firstColumn, int firstRow, int secondColumn, int secondRow) {
+	public void coverBoth(int firstColumn, int firstRow, int secondColumn, int secondRow) { // public so that KeyProcessor can access it
 		this.cards[firstColumn - 1][firstRow - 1].setShowingNumber(false);
 		this.cards[secondColumn - 1][secondRow - 1].setShowingNumber(false);	
 	}

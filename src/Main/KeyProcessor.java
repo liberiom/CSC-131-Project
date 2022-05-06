@@ -90,6 +90,7 @@ public class KeyProcessor{
 					Main.board.shuffle();
 				} else { // Responsible for throwing the user back to the first part
 					Main.board.makeAllMessagesDisappear();
+					Main.board.coverBoth(Main.board.getFirstColumn(), Main.board.getFirstRow(), Main.board.getSecondColumn(), Main.board.getSecondRow());
 					// throw back to first
 					Main.board.setEnterStage(false);
 					Main.board.setFirstQuestion(true);
