@@ -33,7 +33,7 @@ public class Board {
 	
 	
 	public Board() {
-		isVisible = true; // TODO: CHANGE TO FALSE LATER!!!
+		isVisible = false;
 		sprite = new spriteInfo(new Vector2D(X_COORD, Y_COORD), "board");
 		
 		// Use this as reference for other numbers
