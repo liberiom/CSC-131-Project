@@ -35,6 +35,74 @@ public class Board {
 		columnNumberFour = new Vector2D(this.columnNumberThree.getX(), this.columnNumberThree.getY() + COLUMN_SPACING);
 	}
 	
+	public Vector2D getRowNumberOne() {
+		return rowNumberOne;
+	}
+
+	public Vector2D getColumnNumberOne() {
+		return columnNumberOne;
+	}
+
+	public Vector2D getRowNumberTwo() {
+		return rowNumberTwo;
+	}
+
+	public Vector2D getColumnNumberTwo() {
+		return columnNumberTwo;
+	}
+
+	public Vector2D getRowNumberThree() {
+		return rowNumberThree;
+	}
+
+	public Vector2D getColumnNumberThree() {
+		return columnNumberThree;
+	}
+
+	public Vector2D getRowNumberFour() {
+		return rowNumberFour;
+	}
+
+	public Vector2D getColumnNumberFour() {
+		return columnNumberFour;
+	}
+
+	public void setSprite(spriteInfo sprite) {
+		this.sprite = sprite;
+	}
+
+	public void setRowNumberOne(Vector2D rowNumberOne) {
+		this.rowNumberOne = rowNumberOne;
+	}
+
+	public void setColumnNumberOne(Vector2D columnNumberOne) {
+		this.columnNumberOne = columnNumberOne;
+	}
+
+	public void setRowNumberTwo(Vector2D rowNumberTwo) {
+		this.rowNumberTwo = rowNumberTwo;
+	}
+
+	public void setColumnNumberTwo(Vector2D columnNumberTwo) {
+		this.columnNumberTwo = columnNumberTwo;
+	}
+
+	public void setRowNumberThree(Vector2D rowNumberThree) {
+		this.rowNumberThree = rowNumberThree;
+	}
+
+	public void setColumnNumberThree(Vector2D columnNumberThree) {
+		this.columnNumberThree = columnNumberThree;
+	}
+
+	public void setRowNumberFour(Vector2D rowNumberFour) {
+		this.rowNumberFour = rowNumberFour;
+	}
+
+	public void setColumnNumberFour(Vector2D columnNumberFour) {
+		this.columnNumberFour = columnNumberFour;
+	}
+
 	public boolean getVisibility() {
 		return this.isVisible;
 	}
