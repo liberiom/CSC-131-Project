@@ -31,6 +31,7 @@ public class KeyProcessor{
 			break;
 		case '1':
 			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(false);
 				Main.board.recordAnswerAndMoveOn(1);
 				currentNumber = 1;
 			}
@@ -38,6 +39,7 @@ public class KeyProcessor{
 		
 		case '2':
 			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(false);
 				Main.board.recordAnswerAndMoveOn(2);
 				currentNumber = 2;
 			}
@@ -45,6 +47,7 @@ public class KeyProcessor{
 			
 		case '3':	
 			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(false);
 				Main.board.recordAnswerAndMoveOn(3);
 				currentNumber = 3;
 			}
@@ -52,6 +55,7 @@ public class KeyProcessor{
 			
 		case '4':
 			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(false);
 				Main.board.recordAnswerAndMoveOn(4);
 				currentNumber = 4;
 			}
