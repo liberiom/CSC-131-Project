@@ -58,7 +58,7 @@ public class Board {
 		}
 		
 		for (int i = 0; i < 4; i++) { // Rows
-			for (int j = 1; i < 4; j++) {
+			for (int j = 1; j < 4; j++) {
 				this.cards[i][j] = new Card(new Vector2D(this.cards[i][j - 1].getCoords().getX(), this.cards[i][j - 1].getCoords().getY()));
 			}
 		}
