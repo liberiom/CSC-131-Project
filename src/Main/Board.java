@@ -114,6 +114,7 @@ public class Board {
 				isFirstColumn = true;
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
+				isFacingUpAlreadyMessageVisible = false;
 				this.uncover(firstColumn, firstRow);
 				isFirstQuestion = false;
 				isFirstRow = false;
@@ -134,6 +135,7 @@ public class Board {
 				isSecondColumn = true;
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
+				isFacingUpAlreadyMessageVisible = false; 
 				this.uncover(secondColumn, secondRow);
 				isEnterStage = true;
 				isSecondQuestion = false; // might not be necessary
