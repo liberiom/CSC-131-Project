@@ -65,7 +65,7 @@ public class Board {
 		
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				// this.cards[i][j].setNumber(10);
+				this.cards[i][j].setNumber(10);
 			}
 		}
 	}

@@ -19,6 +19,7 @@ public class Card {
 	
 	public Card(Vector2D coords) {
 		this.coords = coords;
+		this.isShowingNumber = true; // TOOD: CHANGE TO FALSE LATER!!!
 	}
 
 	public int getNumber() {
