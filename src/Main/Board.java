@@ -27,11 +27,13 @@ public class Board {
 		rowNumberOne = new Vector2D(this.sprite.getCoords().getX() + 100, this.sprite.getCoords().getY() - 60);
 		columnNumberOne = new Vector2D(this.sprite.getCoords().getX() - 30, this.sprite.getCoords().getY() + 50);
 		
-		rowNumberTwo = new Vector2D(this.rowNumberOne.getX() + ROW_SPACING, this.columnNumberOne.getY());
+		rowNumberTwo = new Vector2D(this.rowNumberOne.getX() + ROW_SPACING, this.rowNumberOne.getY());
 		columnNumberTwo = new Vector2D(this.columnNumberOne.getX(), this.columnNumberOne.getY() + COLUMN_SPACING);
-		rowNumberThree = new Vector2D(this.rowNumberTwo.getX() + ROW_SPACING, this.columnNumberTwo.getY());
+		
+		rowNumberThree = new Vector2D(this.rowNumberTwo.getX() + ROW_SPACING, this.rowNumberTwo.getY());
 		columnNumberThree = new Vector2D(this.columnNumberTwo.getX(), this.columnNumberTwo.getY() + COLUMN_SPACING);
-		rowNumberFour = new Vector2D(this.rowNumberThree.getX() + ROW_SPACING, this.columnNumberThree.getY());
+		
+		rowNumberFour = new Vector2D(this.rowNumberThree.getX() + ROW_SPACING, this.rowNumberThree.getY());
 		columnNumberFour = new Vector2D(this.columnNumberThree.getX(), this.columnNumberThree.getY() + COLUMN_SPACING);
 	}
 	
