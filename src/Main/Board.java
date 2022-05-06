@@ -17,10 +17,23 @@ public class Board {
 	private Vector2D columnNumberFour;
 	private final int ROW_SPACING = 225;
 	private final int COLUMN_SPACING = 100;
+	private final int CARD_REFERENCE_X_COORD = 624;
+	private final int CARD_REFERENCE_Y_COORD = 375;
 	private boolean isVisible;
+	private Card[][] cards;
+	/*
+	 * private Card[][] cards = { // Had to initialize up here because its easier to visualize
+			{new Card(-100, new Vector2D(CARD_REFERENCE_X_COORD, CARD_REFERENCE_Y_COORD)), new Card(-100, new Vector2D(this.cards[0][1].getCoords().getX() + ROW_SPACING, this.cards[0][1].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][2].getCoords().getX() + ROW_SPACING, this.cards[0][2].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][3].getCoords().getX() + ROW_SPACING, this.cards[0][3].getCoords().getY()))},
+			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))},
+			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))},
+			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))}
+	};
+	 */
+	
+	
 	
 	public Board() {
-		isVisible = false;
+		isVisible = true; // TODO: CHANGE TO FALSE LATER!!!
 		sprite = new spriteInfo(new Vector2D(X_COORD, Y_COORD), "board");
 		
 		// Use this as reference for other numbers
@@ -35,8 +48,34 @@ public class Board {
 		
 		rowNumberFour = new Vector2D(this.rowNumberThree.getX() + ROW_SPACING, this.rowNumberThree.getY());
 		columnNumberFour = new Vector2D(this.columnNumberThree.getX(), this.columnNumberThree.getY() + COLUMN_SPACING);
+		
+		this.cards[0][0] = new Card(-100, new Vector2D(CARD_REFERENCE_X_COORD, CARD_REFERENCE_Y_COORD));
+		
+		for (int i = 1; i < 4; i++) { // Columns
+			this.cards[i][0] = new Card(new Vector2D(CARD_REFERENCE_X_COORD, this.cards[i - 1][0].getCoords().getY() + COLUMN_SPACING));
+		}
+		
+		for (int i = 0; i < 4; i++) { // Rows
+			for (int j = 1; i < 4; j++) {
+				this.cards[i][j] = new Card(new Vector2D(this.cards[i][j - 1].getCoords().getX(), this.cards[i][j - 1].getCoords().getY()));
+			}
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; i < 4; j++) {
+				// this.cards[i][j].setNumber(10);
+			}
+		}
 	}
 	
+	public Card[][] getCards() {
+		return cards;
+	}
+
+	public void setCards(Card[][] cards) {
+		this.cards = cards;
+	}
+
 	public Vector2D getRowNumberOne() {
 		return rowNumberOne;
 	}

@@ -61,6 +61,10 @@ public class Main{
 			ctrl.drawString(board.getRowNumberFour().getX(), board.getRowNumberFour().getY(), "4", white);
 			ctrl.drawString(board.getColumnNumberFour().getX(), board.getColumnNumberFour().getY(), "4", white);
 		}
+		
+		if (board.getCards()[0][0].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[0][0].getCoords().getX(), board.getCards()[0][0].getCoords().getY(), Integer.toString(board.getCards()[0][0].getNumber()), white);
+		}
 	}
 	
 	
