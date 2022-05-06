@@ -169,7 +169,20 @@ public class Board {
 				this.counter++;
 			}
 		}
+		this.swap(rng.nextInt(10) + 40); // Swap 40-50 times
 	}
+	
+	private void swap(int iterations) {
+		int tempNumber = 0;
+		Card tempCard = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
+		Card tempCard2 = this.cards[rng.nextInt(4)][rng.nextInt(4)]; 
+		for (int i = 0; i < iterations; i++) {
+			tempNumber = tempCard.getNumber();
+			tempCard.setNumber(tempCard2.getNumber());
+			tempCard2.setNumber(tempNumber);
+		}
+	}
+	
 	
 	
 }
