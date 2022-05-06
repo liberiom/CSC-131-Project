@@ -123,6 +123,7 @@ public class KeyProcessor{
 						Main.board.setVisibility(false);
 						Main.board.setCongratulationsMessageVisible(false);
 						Main.board.setSecondQuestion(false);
+						Main.board.setFirstQuestion(false);
 						
 						// "Would you like to play again?" appears
 						Main.board.setPlayAgainMessageVisible(true);
@@ -135,6 +136,7 @@ public class KeyProcessor{
 			if (yKeyEnabled) {
 				Main.board.setPlayAgainMessageVisible(false);
 				Main.titleScreen.setVisibility(true);
+				enterKeyEnabled = true;
 			}
 			break;
 			
