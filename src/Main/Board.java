@@ -107,6 +107,10 @@ public class Board {
 		} 
 	}
 	
+	public boolean isAMessageShowing() {
+		return (isYouFoundMatchMessageVisible == true) || (isHardLuckMessageVisible == true) || (isCongratulationsMessageVisible == true) || (isFacingUpAlreadyMessageVisible == true);
+	}
+	
 	private boolean alreadyFacingUp(int row, int column) {
 		return this.cards[row - 1][column - 1].isShowingNumber();
 	}

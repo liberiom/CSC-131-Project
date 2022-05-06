@@ -27,22 +27,30 @@ public class KeyProcessor{
 			break;
 		case '1':
 			Main.board.recordAnswerAndMoveOn(1);
-			Main.board.makeAllMessagesDisappear();
+			if (Main.board.isAMessageShowing()) {	
+				Main.board.makeAllMessagesDisappear();
+			}
 			break;
 		
 		case '2':
 			Main.board.recordAnswerAndMoveOn(2);
-			Main.board.makeAllMessagesDisappear();
+			if (Main.board.isAMessageShowing()) {	
+				Main.board.makeAllMessagesDisappear();
+			}
 			break;
 			
-		case '3':
+		case '3':	
 			Main.board.recordAnswerAndMoveOn(3);
-			Main.board.makeAllMessagesDisappear();
+			if (Main.board.isAMessageShowing()) {	
+				Main.board.makeAllMessagesDisappear();
+			}
 			break;
 			
 		case '4':
 			Main.board.recordAnswerAndMoveOn(4);
-			Main.board.makeAllMessagesDisappear();
+			if (Main.board.isAMessageShowing()) {	
+				Main.board.makeAllMessagesDisappear();
+			}
 			break;
 			
 		case '5':
