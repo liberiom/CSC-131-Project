@@ -75,7 +75,25 @@ public class Board {
 	private boolean isHardLuckMessageVisible;
 	private boolean isCongratulationsMessageVisible;
 	private boolean isFacingUpAlreadyMessageVisible;
+	private boolean isPlayAgainMessageVisible;
+	
+	public boolean isPlayAgainMessageVisible() {
+		return isPlayAgainMessageVisible;
+	}
+
+	public void setPlayAgainMessageVisible(boolean isPlayAgainMessageVisible) {
+		this.isPlayAgainMessageVisible = isPlayAgainMessageVisible;
+	}
+
 	private boolean enterKeyPressed = false;
+	
+	public void coverAllCards() {
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				this.cards[i][j].setShowingNumber(false);
+			}
+		}
+	}
 	
 	public boolean isEnterKeyPressed() {
 		return enterKeyPressed;
@@ -85,10 +103,9 @@ public class Board {
 		this.enterKeyPressed = enterKeyPressed;
 	}
 
-	public void makeAllMessagesDisappear() {
+	public void makeAllMessagesExceptCongratulationsDisappear() {
 		this.isYouFoundMatchMessageVisible = false;
 		this.isHardLuckMessageVisible = false;
-		this.isCongratulationsMessageVisible = false; //  may not need to be here
 		this.isFacingUpAlreadyMessageVisible = false;
 	}
 	
@@ -142,9 +159,7 @@ public class Board {
 				forceEnterStageIfNecessary();
 			}
 			// else go to the next part
-		} else { // Enter Stage, where everything but enterStage is false. It activates the enter key, shows messages, and shuts every other key off. The KeyProcessrClass will then be in charge of throwing the user back to the first part
-			
-		}
+		} 
 	}
 	
 	private void forceEnterStageIfNecessary() {
@@ -153,8 +168,11 @@ public class Board {
 			KeyProcessor.numKeysEnabled = false;
 			// show messsages here
 			if (this.match(firstColumn, firstRow, secondColumn, secondRow)) {
-				// TODO: Add if statement that redirects to congratulations
-				isYouFoundMatchMessageVisible = true;
+				if (this.didPlayerWinGame()) {
+					isCongratulationsMessageVisible = true;
+				} else {
+					isYouFoundMatchMessageVisible = true;
+				}
 				// no need to cover up here, matches
 			} else {
 				isHardLuckMessageVisible = true;
@@ -172,10 +190,6 @@ public class Board {
 
 	public boolean isAMessageShowing() {
 		return (isYouFoundMatchMessageVisible == true) || (isHardLuckMessageVisible == true) || (isCongratulationsMessageVisible == true) || (isFacingUpAlreadyMessageVisible == true);
-	}
-	
-	private boolean alreadyFacingUp(int column, int row) {
-		return this.cards[column - 1][row - 1].isShowingNumber();
 	}
 	
 	public void coverBoth(int firstColumn, int firstRow, int secondColumn, int secondRow) { // public so that KeyProcessor can access it

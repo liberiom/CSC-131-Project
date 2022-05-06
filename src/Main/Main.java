@@ -149,6 +149,14 @@ public class Main{
 		if (board.isFacingUpAlreadyMessageVisible()) {
 			ctrl.drawString(509, 92, "That Card is already facing up", white);
 		}
+		
+		if (board.isCongratulationsMessageVisible()) {
+			ctrl.drawString(509, 92, "Congratulations! You found all the matches! Press Enter to continue", white);
+		}
+		
+		if (board.isPlayAgainMessageVisible()) {
+			ctrl.drawString(509, 92, "Would you like to play again? Type Y to play again or N to quit", white);
+		}
 	}
 	
 	

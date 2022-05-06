@@ -12,6 +12,8 @@ public class KeyProcessor{
 	public static boolean enterKeyEnabled = true;
 	private static int currentNumber = -1;
 	public static boolean numKeysEnabled = false;
+	public static boolean yKeyEnabled = false;
+	public static boolean nKeyEnabled = false;
 	
 	// Static Method(s)
 	public static void processKey(char key){
@@ -79,7 +81,6 @@ public class KeyProcessor{
 			
 			break;
 		case '=':
-			System.out.println("Enter key has been pressed");
 			if (enterKeyEnabled) {
 				if (Main.titleScreen.getVisibility() == true) {
 					Main.titleScreen.setVisibility(false);
@@ -93,7 +94,7 @@ public class KeyProcessor{
 					if (Main.board.isHardLuckMessageVisible()) {
 						Main.board.coverBoth(Main.board.getFirstColumn(), Main.board.getFirstRow(), Main.board.getSecondColumn(), Main.board.getSecondRow());
 					}
-					Main.board.makeAllMessagesDisappear();
+					Main.board.makeAllMessagesExceptCongratulationsDisappear();
 					// throw back to first
 					Main.board.setEnterStage(false);
 					Main.board.setFirstQuestion(true);
@@ -107,22 +108,49 @@ public class KeyProcessor{
 					Main.board.setSecondColumn(-1);
 					Main.board.setFirstRow(-1);
 					Main.board.setSecondColumn(-1);
+					
+					// Pass to Y if congratulationsMessage is visible
+					if (Main.board.isCongratulationsMessageVisible()) {
+						// Disable all keys except y or n, or enter (enter is required to get past the home screen)
+						yKeyEnabled = true;
+						nKeyEnabled = true;
+						numKeysEnabled = false; // important, so that the game doesn't just keep going
+						
+						// cover all cards
+						Main.board.coverAllCards();
+						
+						// Make Everything disappear
+						Main.board.setVisibility(false);
+						Main.board.setCongratulationsMessageVisible(false);
+						Main.board.setSecondQuestion(false);
+						
+						// "Would you like to play again?" appears
+						Main.board.setPlayAgainMessageVisible(true);
+					}
 				} 
 			}
 			break;
 		
-		case '$':
-			
+		case 'y':
+			if (yKeyEnabled) {
+				Main.board.setPlayAgainMessageVisible(false);
+				Main.titleScreen.setVisibility(true);
+			}
 			break;
+			
+		case 'n':
+			if (nKeyEnabled) {
+				System.exit(0); // Exits game
+			}
+			break;
+		
 			
 		case 'm':
 			// For mouse coordinates
 			Control.isMouseCoordsDisplayed = !Control.isMouseCoordsDisplayed;
 			break;
 			
-		case 'q':
-			
-			break;
+		
 		}
 	}
 	
