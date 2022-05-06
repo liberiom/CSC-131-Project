@@ -15,7 +15,7 @@ public class Board {
 	private Vector2D columnNumberThree;
 	private Vector2D rowNumberFour;
 	private Vector2D columnNumberFour;
-	private final int ROW_SPACING = 200;
+	private final int ROW_SPACING = 300;
 	private final int COLUMN_SPACING = 100;
 	private boolean isVisible;
 	
@@ -24,7 +24,7 @@ public class Board {
 		sprite = new spriteInfo(new Vector2D(X_COORD, Y_COORD), "board");
 		
 		// Use this as reference for other numbers
-		rowNumberOne = new Vector2D(this.sprite.getCoords().getX() + 100, this.sprite.getCoords().getY() - 60);
+		rowNumberOne = new Vector2D(this.sprite.getCoords().getX() + 100, this.sprite.getCoords().getY() - 40);
 		columnNumberOne = new Vector2D(this.sprite.getCoords().getX() - 30, this.sprite.getCoords().getY() + 50);
 		
 		rowNumberTwo = new Vector2D(this.rowNumberOne.getX() + ROW_SPACING, this.rowNumberOne.getY());
