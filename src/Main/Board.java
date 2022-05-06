@@ -139,12 +139,12 @@ public class Board {
 	}
 	
 	private boolean alreadyFacingUp(int row, int column) {
-		return this.cards[row - 1][column - 1].isShowingNumber();
+		return this.cards[column - 1][row - 1].isShowingNumber();
 	}
 	
 	private void coverBoth(int firstRow, int firstColumn, int secondRow, int secondColumn) {
-		this.cards[firstRow - 1][firstColumn - 1].setShowingNumber(false);
-		this.cards[secondRow - 1][secondColumn - 1].setShowingNumber(false);	
+		this.cards[firstColumn - 1][firstRow - 1].setShowingNumber(false);
+		this.cards[secondColumn - 1][secondRow - 1].setShowingNumber(false);	
 	}
 	
 	public boolean isYouFoundMatchMessageVisible() {
@@ -172,14 +172,14 @@ public class Board {
 	}
 
 	private boolean match(int firstRow, int firstColumn, int secondRow, int secondColumn) {
-		return this.cards[firstRow - 1][firstColumn - 1].getNumber() == this.cards[secondRow - 1][secondColumn - 1].getNumber();
+		return this.cards[firstColumn - 1][firstRow - 1].getNumber() == this.cards[secondColumn - 1][secondRow - 1].getNumber();
 	}
 	
 	private boolean didPlayerWinGame() {
 		return false; // TODO: Fix this
 	}
 	private void uncover(int row, int column) {
-		this.cards[row - 1][column - 1].setShowingNumber(true);
+		this.cards[column - 1][row - 1].setShowingNumber(true);
 	}
 	public boolean isFirstRow() {
 		return isFirstRow;

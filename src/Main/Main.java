@@ -145,6 +145,10 @@ public class Main{
 		if (board.isHardLuckMessageVisible()) {
 			ctrl.drawString(509, 92, "Hard luck! Not a match!", white);
 		}
+		
+		if (board.isFacingUpAlreadyMessageVisible()) {
+			ctrl.drawString(509, 92, "That Card is already facing up", white);
+		}
 	}
 	
 	
