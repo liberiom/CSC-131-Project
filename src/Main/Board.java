@@ -135,10 +135,16 @@ public class Board {
 				this.uncover(secondColumn, secondRow);
 				isEnterStage = true;
 				isSecondQuestion = false; // might not be necessary
-				forceEnterStage();
+				forceEnterStageIfNecessary();
 			}
 			// else go to the next part
 		} else { // Enter Stage, where everything but enterStage is false. It activates the enter key, shows messages, and shuts every other key off. The KeyProcessrClass will then be in charge of throwing the user back to the first part
+			
+		}
+	}
+	
+	private void forceEnterStageIfNecessary() {
+		if (isEnterStage) {
 			KeyProcessor.enterKeyEnabled = true;
 			KeyProcessor.numKeysEnabled = false;
 			// show messsages here
@@ -150,10 +156,6 @@ public class Board {
 				isHardLuckMessageVisible = true;
 			}
 		}
-	}
-	
-	private void forceEnterStage() {
-		recordAnswerAndMoveOn(secondRow);
 	}
 	
 	public boolean isEnterStage() {
