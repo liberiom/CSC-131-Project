@@ -34,6 +34,7 @@ public class Board {
 	private boolean isSecondQuestion;
 	private boolean isSecondRow;
 	private boolean isSecondColumn;
+	private boolean isEnterStage;
 	private int firstRow = -1;
 	private int firstColumn = -1;
 	private int secondRow = -1;
@@ -68,81 +69,72 @@ public class Board {
 	}
 
 	public void recordAnswerAndMoveOn(int answer) {
-		if (isFirstQuestion && isFirstRow) {
-			/*
-			 * if ((firstRow != -1) && (firstColumn != -1) && (secondRow != -1) && (secondColumn != -1)) {
-				this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
-				// reset first and second rows and columns
-				firstRow = -1;
-				secondRow = -1;
-				firstColumn = -1;
-				secondColumn = -1;
-			}
-			 */
-			firstRow = answer;
-			isFirstRow = false;
-			isFirstColumn = true;
-		} else if (isFirstQuestion && isFirstColumn) {
+		if (isFirstQuestion && isFirstColumn) {
 			firstColumn = answer;
-			if (this.alreadyFacingUp(firstRow, firstColumn)) {
-				isFacingUpAlreadyMessageVisible = true;
+			// Go to next part
+			isFirstColumn = false;
+			isFirstRow = true;
+		} else if (isFirstQuestion && isFirstRow) {
+			firstRow = answer;
+			// If card is already up go back to the last part
+			if (this.cards[firstColumn - 1][firstRow - 1].isShowingNumber()) {
+				isFirstRow = false;
+				isFirstColumn = true;
 			} else {
-				isFirstColumn = false;
+				this.uncover(firstColumn, firstRow);
 				isFirstQuestion = false;
+				isFirstRow = false;
 				isSecondQuestion = true;
-				isSecondRow = true;
-				this.uncover(firstRow, firstColumn);
+				isSecondColumn = true;
 			}
-		} else if (isSecondQuestion && isSecondRow) {
-			secondRow = answer;
-			isSecondRow = false;
-			isSecondColumn = true;
+			// else go to the next part
 		} else if (isSecondQuestion && isSecondColumn) {
 			secondColumn = answer;
-			if (this.alreadyFacingUp(secondRow, secondColumn) && !enterKeyPressed) {
-				isFacingUpAlreadyMessageVisible = true; 
+			// Go to next part
+			isSecondColumn = false;
+			isSecondRow = true;
+		} else if (isSecondQuestion && isSecondRow) {
+			secondRow = answer;
+			// If card is already up go back to the last part
+			if (this.cards[secondColumn - 1][secondRow - 1].isShowingNumber()) {
+				isSecondRow = false;
+				isSecondColumn = true;
 			} else {
-				this.uncover(secondRow, secondColumn);
-				if (enterKeyPressed) {
-					isSecondColumn = false;
-					isSecondQuestion = false;
-					isFirstQuestion = true;
-					isFirstRow = true;
-					KeyProcessor.enterKeyEnabled = false;
-				}
-				if (this.match(firstRow, firstColumn, secondRow, secondColumn) && !enterKeyPressed) {
-					if (this.didPlayerWinGame()) {
-						isCongratulationsMessageVisible = true;
-					} else {
-						isYouFoundMatchMessageVisible = true;
-						KeyProcessor.enterKeyEnabled = true; 
-					} 
-				} else {
-					if (!enterKeyPressed) {
-						isHardLuckMessageVisible = true; 
-						KeyProcessor.enterKeyEnabled = true;
-					} else {
-						this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
-						// reset first and second rows and columns
-						firstRow = -1;
-						secondRow = -1;
-						firstColumn = -1;
-						secondColumn = -1;
-					}
-				}
+				this.uncover(secondColumn, secondRow);
+				isEnterStage = true;
+				isSecondQuestion = false; // might not be necessary
 			}
-		} 
+			// else go to the next part
+		} else { // Enter Stage, where everything but enterStage is false. It activates the enter key, shows messages, and shuts every other key off. The KeyProcessrClass will then be in charge of throwing the user back to the first part
+			KeyProcessor.enterKeyEnabled = true;
+			KeyProcessor.numKeysEnabled = false;
+			// show messsages here
+			if (this.match(firstColumn, firstRow, secondColumn, secondRow)) {
+				// TODO: Add if statement that redirects to congratulations
+				isYouFoundMatchMessageVisible = true;
+			} else {
+				isHardLuckMessageVisible = true;
+			}
+		}
 	}
 	
+	public boolean isEnterStage() {
+		return isEnterStage;
+	}
+
+	public void setEnterStage(boolean isEnterStage) {
+		this.isEnterStage = isEnterStage;
+	}
+
 	public boolean isAMessageShowing() {
 		return (isYouFoundMatchMessageVisible == true) || (isHardLuckMessageVisible == true) || (isCongratulationsMessageVisible == true) || (isFacingUpAlreadyMessageVisible == true);
 	}
 	
-	private boolean alreadyFacingUp(int row, int column) {
+	private boolean alreadyFacingUp(int column, int row) {
 		return this.cards[column - 1][row - 1].isShowingNumber();
 	}
 	
-	private void coverBoth(int firstRow, int firstColumn, int secondRow, int secondColumn) {
+	private void coverBoth(int firstColumn, int firstRow, int secondColumn, int secondRow) {
 		this.cards[firstColumn - 1][firstRow - 1].setShowingNumber(false);
 		this.cards[secondColumn - 1][secondRow - 1].setShowingNumber(false);	
 	}
@@ -171,14 +163,14 @@ public class Board {
 		this.isCongratulationsMessageVisible = isCongratulationsMessageVisible;
 	}
 
-	private boolean match(int firstRow, int firstColumn, int secondRow, int secondColumn) {
+	private boolean match(int firstColumn, int firstRow, int secondColumn, int secondRow) {
 		return this.cards[firstColumn - 1][firstRow - 1].getNumber() == this.cards[secondColumn - 1][secondRow - 1].getNumber();
 	}
 	
 	private boolean didPlayerWinGame() {
 		return false; // TODO: Fix this
 	}
-	private void uncover(int row, int column) {
+	private void uncover(int column, int row) {
 		this.cards[column - 1][row - 1].setShowingNumber(true);
 	}
 	public boolean isFirstRow() {
@@ -235,11 +227,12 @@ public class Board {
 	public Board() {
 		// Question-related booleans
 		isFirstQuestion = false;
-		isFirstRow = true;
+		isFirstRow = false;
 		isFirstColumn = false;
 		isSecondQuestion = false;
 		isSecondRow = false;
 		isSecondColumn = false;
+		isEnterStage = false;
 		
 		rng = new Random();
 		isVisible = false;

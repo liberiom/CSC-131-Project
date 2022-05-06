@@ -139,11 +139,11 @@ public class Main{
 		}
 		
 		if (board.isYouFoundMatchMessageVisible()) {
-			ctrl.drawString(509, 92, "Hey! You found a match! Good job!", white);
+			ctrl.drawString(509, 92, "Hey! You found a match! Good job! Press Enter to continue", white);
 		} 	
 		
 		if (board.isHardLuckMessageVisible()) {
-			ctrl.drawString(509, 92, "Hard luck! Not a match!", white);
+			ctrl.drawString(509, 92, "Hard luck! Not a match! Press Enter to continue", white);
 		}
 		
 		if (board.isFacingUpAlreadyMessageVisible()) {

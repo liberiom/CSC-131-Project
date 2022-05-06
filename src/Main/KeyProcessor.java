@@ -11,6 +11,7 @@ public class KeyProcessor{
 	private static stopWatchX sw = new stopWatchX(200);
 	public static boolean enterKeyEnabled;
 	private static int currentNumber = -1;
+	public static boolean numKeysEnabled = true;
 	
 	// Static Method(s)
 	public static void processKey(char key){
@@ -27,23 +28,31 @@ public class KeyProcessor{
 			System.exit(0);
 			break;
 		case '1':
-			Main.board.recordAnswerAndMoveOn(1);
-			currentNumber = 1;
+			if (numKeysEnabled) {
+				Main.board.recordAnswerAndMoveOn(1);
+				currentNumber = 1;
+			}
 			break;
 		
 		case '2':
-			Main.board.recordAnswerAndMoveOn(2);
-			currentNumber = 2;
+			if (numKeysEnabled) {
+				Main.board.recordAnswerAndMoveOn(2);
+				currentNumber = 2;
+			}
 			break;
 			
 		case '3':	
-			Main.board.recordAnswerAndMoveOn(3);
-			currentNumber = 3;
+			if (numKeysEnabled) {
+				Main.board.recordAnswerAndMoveOn(3);
+				currentNumber = 3;
+			}
 			break;
 			
 		case '4':
-			Main.board.recordAnswerAndMoveOn(4);
-			currentNumber = 4;
+			if (numKeysEnabled) {
+				Main.board.recordAnswerAndMoveOn(4);
+				currentNumber = 4;
+			}
 			break;
 			
 		case '5':
@@ -76,13 +85,19 @@ public class KeyProcessor{
 					Main.titleScreen.setVisibility(false);
 					Main.board.setVisibility(true);
 					Main.board.setFirstQuestion(true); // Prevents the question from popping up in the title screen
+					Main.board.setFirstColumn(true);
 					enterKeyEnabled = false;
 					Main.board.shuffle();
-				} else {
+				} else { // Responsible for throwing the user back to the first part
 					Main.board.makeAllMessagesDisappear();
-					Main.board.setEnterKeyPressed(true);
-					Main.board.recordAnswerAndMoveOn(currentNumber); 
-				}
+					// throw back to first
+					Main.board.setEnterStage(false);
+					Main.board.setFirstQuestion(true);
+					Main.board.setFirstColumn(true);
+					// set the keys back to normal!
+					numKeysEnabled = true;
+					enterKeyEnabled = false;
+				} 
 			}
 			break;
 		
