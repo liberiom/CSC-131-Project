@@ -147,7 +147,7 @@ public class Main{
 		}
 		
 		if (board.isFacingUpAlreadyMessageVisible()) {
-			ctrl.drawString(509, 92, "That Card is already facing up", white);
+			ctrl.drawString(509, 92, "That Card is already facing up. Please type another number", white);
 		}
 		
 		if (board.isCongratulationsMessageVisible()) {
