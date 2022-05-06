@@ -65,6 +65,67 @@ public class Main{
 		if (board.getCards()[0][0].isShowingNumber()) {
 			ctrl.drawString(board.getCards()[0][0].getCoords().getX(), board.getCards()[0][0].getCoords().getY(), Integer.toString(board.getCards()[0][0].getNumber()), white);
 		}
+		
+		if (board.getCards()[0][1].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[0][1].getCoords().getX(), board.getCards()[0][1].getCoords().getY(), Integer.toString(board.getCards()[0][1].getNumber()), white);
+		}
+		
+		if (board.getCards()[0][2].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[0][2].getCoords().getX(), board.getCards()[0][2].getCoords().getY(), Integer.toString(board.getCards()[0][2].getNumber()), white);
+		}
+		
+		if (board.getCards()[0][3].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[0][3].getCoords().getX(), board.getCards()[0][3].getCoords().getY(), Integer.toString(board.getCards()[0][3].getNumber()), white);
+		}
+		
+		if (board.getCards()[1][0].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[1][0].getCoords().getX(), board.getCards()[1][0].getCoords().getY(), Integer.toString(board.getCards()[1][0].getNumber()), white);
+		}
+		
+		if (board.getCards()[1][1].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[1][1].getCoords().getX(), board.getCards()[1][1].getCoords().getY(), Integer.toString(board.getCards()[1][1].getNumber()), white);
+		}
+		
+		if (board.getCards()[1][2].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[1][2].getCoords().getX(), board.getCards()[1][2].getCoords().getY(), Integer.toString(board.getCards()[1][2].getNumber()), white);
+		}
+		
+		if (board.getCards()[1][3].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[1][3].getCoords().getX(), board.getCards()[1][3].getCoords().getY(), Integer.toString(board.getCards()[1][3].getNumber()), white);
+		}
+		
+		if (board.getCards()[2][0].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[2][0].getCoords().getX(), board.getCards()[2][0].getCoords().getY(), Integer.toString(board.getCards()[2][0].getNumber()), white);
+		}
+		
+		if (board.getCards()[2][1].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[2][1].getCoords().getX(), board.getCards()[2][1].getCoords().getY(), Integer.toString(board.getCards()[2][1].getNumber()), white);
+		}
+		
+		if (board.getCards()[2][2].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[2][2].getCoords().getX(), board.getCards()[2][2].getCoords().getY(), Integer.toString(board.getCards()[2][2].getNumber()), white);
+		}
+		
+		if (board.getCards()[2][3].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[2][3].getCoords().getX(), board.getCards()[2][3].getCoords().getY(), Integer.toString(board.getCards()[2][3].getNumber()), white);
+		}
+		
+		if (board.getCards()[3][0].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[3][0].getCoords().getX(), board.getCards()[3][0].getCoords().getY(), Integer.toString(board.getCards()[3][0].getNumber()), white);
+		}
+		
+		if (board.getCards()[3][1].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[3][1].getCoords().getX(), board.getCards()[3][1].getCoords().getY(), Integer.toString(board.getCards()[3][1].getNumber()), white);
+		}
+		
+		if (board.getCards()[3][2].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[3][2].getCoords().getX(), board.getCards()[3][2].getCoords().getY(), Integer.toString(board.getCards()[3][2].getNumber()), white);
+		}
+		
+		if (board.getCards()[3][3].isShowingNumber()) {
+			ctrl.drawString(board.getCards()[3][3].getCoords().getX(), board.getCards()[3][3].getCoords().getY(), Integer.toString(board.getCards()[3][3].getNumber()), white);
+		}
+		
 	}
 	
 	
