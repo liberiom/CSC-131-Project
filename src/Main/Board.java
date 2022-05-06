@@ -101,6 +101,13 @@ public class Board {
 	}
 
 	public void recordAnswerAndMoveOn(int answer) {
+		System.out.println("1st Question: " + isFirstQuestion);
+		System.out.println(isFirstColumn);
+		System.out.println(isFirstRow);
+		System.out.println("2nd Question: " + isSecondQuestion);
+		System.out.println(isSecondColumn);
+		System.out.println(isSecondRow);
+		
 		if (isFirstQuestion && isFirstColumn) {
 			firstColumn = answer;
 			// Go to next part

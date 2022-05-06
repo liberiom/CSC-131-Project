@@ -89,10 +89,6 @@ public class KeyProcessor{
 					enterKeyEnabled = false;
 					Main.board.shuffle();
 				} else { // Responsible for throwing the user back to the first part
-					Main.board.setFirstColumn(-1);
-					Main.board.setSecondColumn(-1);
-					Main.board.setFirstRow(-1);
-					Main.board.setSecondColumn(-1);
 					if (Main.board.isHardLuckMessageVisible()) {
 						Main.board.coverBoth(Main.board.getFirstColumn(), Main.board.getFirstRow(), Main.board.getSecondColumn(), Main.board.getSecondRow());
 					}
@@ -105,6 +101,10 @@ public class KeyProcessor{
 					// set the keys back to normal!
 					numKeysEnabled = true;
 					enterKeyEnabled = false;
+					Main.board.setFirstColumn(-1);
+					Main.board.setSecondColumn(-1);
+					Main.board.setFirstRow(-1);
+					Main.board.setSecondColumn(-1);
 				} 
 			}
 			break;
