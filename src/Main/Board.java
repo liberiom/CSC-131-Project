@@ -226,7 +226,14 @@ public class Board {
 	}
 	
 	private boolean didPlayerWinGame() {
-		return false; // TODO: Fix this
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (!this.cards[i][j].isShowingNumber()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	private void uncover(int column, int row) {
 		this.cards[column - 1][row - 1].setShowingNumber(true);
