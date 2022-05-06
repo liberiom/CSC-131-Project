@@ -126,6 +126,25 @@ public class Main{
 			ctrl.drawString(board.getCards()[3][3].getCoords().getX(), board.getCards()[3][3].getCoords().getY(), Integer.toString(board.getCards()[3][3].getNumber()), white);
 		}
 		
+		if (board.isFirstQuestion() && board.isFirstRow()) {
+			ctrl.drawString(519, 833, "What is the First Card you would like to see? Please type the row number", white);
+		} else if (board.isFirstQuestion() && board.isFirstColumn()) {
+			ctrl.drawString(519, 833, "What is the First Card you would like to see? Please type the column number", white);
+		}
+		
+		if (board.isSecondColumn() && board.isSecondRow()) {
+			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the row number", white);
+		} else if (board.isSecondQuestion() && board.isSecondColumn()) {
+			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the column number", white);
+		}
+		
+		if (board.isYouFoundMatchMessageVisible()) {
+			ctrl.drawString(509, 92, "Hey! You found a match! Good job!", white);
+		} 	
+		
+		if (board.isHardLuckMessageVisible()) {
+			ctrl.drawString(509, 92, "Hard luck! Not a match!", white);
+		}
 	}
 	
 	

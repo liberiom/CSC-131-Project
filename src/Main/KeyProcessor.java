@@ -26,9 +26,44 @@ public class KeyProcessor{
 			System.exit(0);
 			break;
 		case '1':
-			System.out.println("Number has been pressed");
+			Main.board.recordAnswerAndMoveOn(1);
+			break;
+		
+		case '2':
+			Main.board.recordAnswerAndMoveOn(2);
 			break;
 			
+		case '3':
+			Main.board.recordAnswerAndMoveOn(3);
+			break;
+			
+		case '4':
+			Main.board.recordAnswerAndMoveOn(4);
+			break;
+			
+		case '5':
+			
+			break;
+			
+		case '6':
+			
+			break;
+			
+		case '7':
+			
+			break;
+			
+		case '8':
+			
+			break;
+			
+		case '9':
+			
+			break;
+			
+		case '0':
+			
+			break;
 		case '=':
 			System.out.println("Enter key has been pressed");
 			if (enterKeyEnabled) {
@@ -36,18 +71,11 @@ public class KeyProcessor{
 					Main.titleScreen.setVisibility(false);
 					Main.board.setVisibility(true);
 					enterKeyEnabled = false;
-					/*
-					 * TODO: Put shuffle method here
-					 */
-					
+					Main.board.shuffle();
 				}
 			}
 			break;
-			
-		/*
-		 * For anyone looking at the source code in here, the reason why there were uKeyEnabled, oKeyEnabled, etc. was because initially, inspecting each item prompted the player to press different keys (u, o, etc.).
-		 * But that's not what the assignment said to do, instead it said to use the space bar for all inspecting. 
-		 */
+		
 		case '$':
 			
 			break;

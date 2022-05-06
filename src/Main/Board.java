@@ -26,18 +26,187 @@ public class Board {
 	private Card[][] cards;
 	private static Random rng;
 	private int counter = 1;
-	/*
-	 * private Card[][] cards = { // Had to initialize up here because its easier to visualize
-			{new Card(-100, new Vector2D(CARD_REFERENCE_X_COORD, CARD_REFERENCE_Y_COORD)), new Card(-100, new Vector2D(this.cards[0][1].getCoords().getX() + ROW_SPACING, this.cards[0][1].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][2].getCoords().getX() + ROW_SPACING, this.cards[0][2].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][3].getCoords().getX() + ROW_SPACING, this.cards[0][3].getCoords().getY()))},
-			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))},
-			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))},
-			{new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD)), new Card(-100, new Vector2D(X_COORD, Y_COORD))}
-	};
-	 */
 	
+	// Question-related stuff
+	private boolean isFirstQuestion;
+	private boolean isFirstRow;
+	private boolean isFirstColumn;
+	private boolean isSecondQuestion;
+	private boolean isSecondRow;
+	private boolean isSecondColumn;
+	private int firstRow;
+	private int firstColumn;
+	private int secondRow;
+	private int secondColumn;
+	private boolean isYouFoundMatchMessageVisible;
+	private boolean isHardLuckMessageVisible;
+	private boolean isCongratulationsMessageVisible;
+	private boolean isFacingUpAlreadyMessageVisible;
 	
+	public void makeAllMessagesDisappear() {
+		this.isYouFoundMatchMessageVisible = false;
+		this.isHardLuckMessageVisible = false;
+		this.isCongratulationsMessageVisible = false; //  may not need to be here
+		this.isFacingUpAlreadyMessageVisible = false;
+	}
 	
+	public boolean isFacingUpAlreadyMessageVisible() {
+		return isFacingUpAlreadyMessageVisible;
+	}
+
+	public void setFacingUpAlreadyMessageVisible(boolean isFacingUpAlreadyMessageVisible) {
+		this.isFacingUpAlreadyMessageVisible = isFacingUpAlreadyMessageVisible;
+	}
+
+	public void recordAnswerAndMoveOn(int answer) {
+		if (isFirstQuestion && isFirstRow) {
+			firstRow = answer;
+			isFirstRow = false;
+			isFirstColumn = true;
+		} else if (isFirstQuestion && isFirstColumn) {
+			firstColumn = answer;
+			if (this.alreadyFacingUp(firstRow, firstColumn)) {
+				isFacingUpAlreadyMessageVisible = true;
+			} else {
+				isFirstColumn = false;
+				isFirstQuestion = false;
+				isSecondQuestion = true;
+				isSecondRow = true;
+				this.uncover(firstRow, firstColumn);
+			}
+		} else if (isSecondQuestion && isSecondRow) {
+			secondRow = answer;
+			isSecondRow = false;
+			isSecondColumn = true;
+		} else if (isSecondQuestion & isSecondColumn) {
+			secondColumn = answer;
+			if (this.alreadyFacingUp(secondRow, secondColumn)) {
+				isFacingUpAlreadyMessageVisible = true;
+			} else {
+				isSecondColumn = false;
+				isSecondQuestion = false;
+				isFirstQuestion = true;
+				isFirstRow = true;
+				this.uncover(secondRow, secondColumn);
+				if (this.match(firstRow, firstColumn, secondRow, secondColumn)) {
+					if (this.didPlayerWinGame()) {
+						isCongratulationsMessageVisible = true;
+					} else {
+						isYouFoundMatchMessageVisible = true;
+					} 
+				} else {
+					this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
+					isHardLuckMessageVisible = true; 
+				}
+				// reset first and second rows and columns
+				firstRow = -1;
+				secondRow = -1;
+				firstColumn = -1;
+				secondColumn = -1;
+			}
+		} 
+	}
+	
+	private boolean alreadyFacingUp(int row, int column) {
+		return this.cards[row - 1][column - 1].isShowingNumber();
+	}
+	
+	private void coverBoth(int firstRow, int firstColumn, int secondRow, int secondColumn) {
+		this.cards[firstRow - 1][firstColumn - 1].setShowingNumber(false);
+		this.cards[secondRow - 1][secondColumn - 1].setShowingNumber(false);	
+	}
+	
+	public boolean isYouFoundMatchMessageVisible() {
+		return isYouFoundMatchMessageVisible;
+	}
+
+	public boolean isHardLuckMessageVisible() {
+		return isHardLuckMessageVisible;
+	}
+
+	public boolean isCongratulationsMessageVisible() {
+		return isCongratulationsMessageVisible;
+	}
+
+	public void setYouFoundMatchMessageVisible(boolean isYouFoundMatchMessageVisible) {
+		this.isYouFoundMatchMessageVisible = isYouFoundMatchMessageVisible;
+	}
+
+	public void setHardLuckMessageVisible(boolean isHardLuckMessageVisible) {
+		this.isHardLuckMessageVisible = isHardLuckMessageVisible;
+	}
+
+	public void setCongratulationsMessageVisible(boolean isCongratulationsMessageVisible) {
+		this.isCongratulationsMessageVisible = isCongratulationsMessageVisible;
+	}
+
+	private boolean match(int firstRow, int firstColumn, int secondRow, int secondColumn) {
+		return this.cards[firstRow - 1][firstColumn - 1].getNumber() == this.cards[secondRow - 1][secondColumn - 1].getNumber();
+	}
+	
+	private boolean didPlayerWinGame() {
+		return false; // TODO: Fix this
+	}
+	private void uncover(int row, int column) {
+		this.cards[row - 1][column - 1].setShowingNumber(true);
+	}
+	public boolean isFirstRow() {
+		return isFirstRow;
+	}
+
+	public boolean isFirstColumn() {
+		return isFirstColumn;
+	}
+
+	public boolean isSecondQuestion() {
+		return isSecondQuestion;
+	}
+
+	public boolean isSecondRow() {
+		return isSecondRow;
+	}
+
+	public boolean isSecondColumn() {
+		return isSecondColumn;
+	}
+
+	public void setFirstRow(boolean isFirstRow) {
+		this.isFirstRow = isFirstRow;
+	}
+
+	public void setFirstColumn(boolean isFirstColumn) {
+		this.isFirstColumn = isFirstColumn;
+	}
+
+	public void setSecondQuestion(boolean isSecondQuestion) {
+		this.isSecondQuestion = isSecondQuestion;
+	}
+
+	public void setSecondRow(boolean isSecondRow) {
+		this.isSecondRow = isSecondRow;
+	}
+
+	public void setSecondColumn(boolean isSecondColumn) {
+		this.isSecondColumn = isSecondColumn;
+	}
+
+	public boolean isFirstQuestion() {
+		return isFirstQuestion;
+	}
+
+	public void setFirstQuestion(boolean isFirstQuestion) {
+		this.isFirstQuestion = isFirstQuestion;
+	}
+
 	public Board() {
+		// Question-related booleans
+		isFirstQuestion = true;
+		isFirstRow = true;
+		isFirstColumn = false;
+		isSecondQuestion = false;
+		isSecondRow = false;
+		isSecondColumn = false;
+		
 		rng = new Random();
 		isVisible = false;
 		sprite = new spriteInfo(new Vector2D(X_COORD, Y_COORD), "board");
@@ -69,7 +238,7 @@ public class Board {
 			}
 		}
 		
-		this.shuffle();
+		// this.shuffle(); --> redundant, is already used in the KeyProcess class 
 	}
 	
 	public Card[][] getCards() {
@@ -161,7 +330,7 @@ public class Board {
 	}
 	
 	
-	private void shuffle() {
+	public void shuffle() { // Public so that KeyProcess can access this
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 3; j += 2) {
 				this.cards[i][j].setNumber(counter);

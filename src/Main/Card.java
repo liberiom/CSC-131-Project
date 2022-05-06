@@ -10,7 +10,7 @@ public class Card {
 	public Card(int number, Vector2D coords) {
 		this.number = number;
 		this.coords = coords;
-		this.isShowingNumber = true; // TODO: CHANGE TO FALSE LATER!!!
+		this.isShowingNumber = false; // TODO: CHANGE TO FALSE LATER!!!
 	}
 	
 	public Card() { // Alternative Constructor
@@ -19,7 +19,7 @@ public class Card {
 	
 	public Card(Vector2D coords) {
 		this.coords = coords;
-		this.isShowingNumber = true; // TOOD: CHANGE TO FALSE LATER!!!
+		this.isShowingNumber = false; // TOOD: CHANGE TO FALSE LATER!!!
 	}
 
 	public int getNumber() {
