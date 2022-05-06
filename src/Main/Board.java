@@ -112,9 +112,11 @@ public class Board {
 						isCongratulationsMessageVisible = true;
 					} else {
 						isYouFoundMatchMessageVisible = true;
+						KeyProcessor.enterKeyEnabled = true; 
 					} 
 				} else {
 					isHardLuckMessageVisible = true; 
+					KeyProcessor.enterKeyEnabled = true;
 				}
 			}
 		} 
