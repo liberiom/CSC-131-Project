@@ -79,6 +79,7 @@ public class KeyProcessor{
 					enterKeyEnabled = false;
 					Main.board.shuffle();
 				} else {
+					Main.board.makeAllMessagesDisappear();
 					Main.board.setEnterKeyPressed(true);
 					Main.board.recordAnswerAndMoveOn(currentNumber);
 				}

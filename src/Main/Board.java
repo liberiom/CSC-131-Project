@@ -100,7 +100,13 @@ public class Board {
 			if (this.alreadyFacingUp(secondRow, secondColumn)) {
 				isFacingUpAlreadyMessageVisible = true; 
 			} else {
-				this.uncover(secondRow, secondColumn); 
+				this.uncover(secondRow, secondColumn);
+				if (enterKeyPressed) {
+					isSecondColumn = false;
+					isSecondQuestion = false;
+					isFirstQuestion = true;
+					isFirstRow = true;
+				}
 				if (this.match(firstRow, firstColumn, secondRow, secondColumn)) {
 					if (this.didPlayerWinGame()) {
 						isCongratulationsMessageVisible = true;
@@ -109,12 +115,6 @@ public class Board {
 					} 
 				} else {
 					isHardLuckMessageVisible = true; 
-				}
-				if (enterKeyPressed) {
-					isSecondColumn = false;
-					isSecondQuestion = false;
-					isFirstQuestion = true;
-					isFirstRow = true;
 				}
 			}
 		} 
