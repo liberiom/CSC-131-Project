@@ -1,6 +1,9 @@
 package Main;
 
 import Data.spriteInfo;
+
+import java.util.Random;
+
 import Data.Vector2D;
 
 public class Board {
@@ -21,6 +24,8 @@ public class Board {
 	private final int CARD_REFERENCE_Y_COORD = 375;
 	private boolean isVisible;
 	private Card[][] cards;
+	private static Random rng;
+	private int counter = 1;
 	/*
 	 * private Card[][] cards = { // Had to initialize up here because its easier to visualize
 			{new Card(-100, new Vector2D(CARD_REFERENCE_X_COORD, CARD_REFERENCE_Y_COORD)), new Card(-100, new Vector2D(this.cards[0][1].getCoords().getX() + ROW_SPACING, this.cards[0][1].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][2].getCoords().getX() + ROW_SPACING, this.cards[0][2].getCoords().getY())), new Card(-100, new Vector2D(this.cards[0][3].getCoords().getX() + ROW_SPACING, this.cards[0][3].getCoords().getY()))},
@@ -33,6 +38,7 @@ public class Board {
 	
 	
 	public Board() {
+		rng = new Random();
 		isVisible = false;
 		sprite = new spriteInfo(new Vector2D(X_COORD, Y_COORD), "board");
 		
@@ -59,15 +65,11 @@ public class Board {
 		
 		for (int i = 0; i < 4; i++) { // Rows
 			for (int j = 1; j < 4; j++) {
-				this.cards[i][j] = new Card(new Vector2D(this.cards[i][j - 1].getCoords().getX(), this.cards[i][j - 1].getCoords().getY()));
+				this.cards[i][j] = new Card(new Vector2D(this.cards[i][j - 1].getCoords().getX() + ROW_SPACING, this.cards[i][j - 1].getCoords().getY()));
 			}
 		}
 		
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				this.cards[i][j].setNumber(10);
-			}
-		}
+		this.shuffle();
 	}
 	
 	public Card[][] getCards() {
@@ -157,4 +159,17 @@ public class Board {
 	public spriteInfo getSprite() {
 		return this.sprite;
 	}
+	
+	
+	private void shuffle() {
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j += 2) {
+				this.cards[i][j].setNumber(counter);
+				this.cards[i][j + 1].setNumber(counter);
+				this.counter++;
+			}
+		}
+	}
+	
+	
 }
