@@ -104,7 +104,7 @@ public class Board {
 		this.enterKeyPressed = enterKeyPressed;
 	}
 
-	public void makeAllMessagesExceptCongratulationsDisappear() {
+	public void makeAllMessagesExceptCongratulationsAndOutOfRangeDisappear() {
 		this.isYouFoundMatchMessageVisible = false;
 		this.isHardLuckMessageVisible = false;
 		this.isFacingUpAlreadyMessageVisible = false;
@@ -132,9 +132,11 @@ public class Board {
 			if (this.cards[firstColumn - 1][firstRow - 1].isShowingNumber()) {
 				isFirstRow = false;
 				isFirstColumn = true;
-				if (isOutOfRangeMessageVisible) {
+				/*
+				 * if (isOutOfRangeMessageVisible) {
 					isOutOfRangeMessageVisible = false;
 				}
+				 */
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
 				this.uncover(firstColumn, firstRow);
@@ -158,6 +160,11 @@ public class Board {
 			if (this.cards[secondColumn - 1][secondRow - 1].isShowingNumber()) {
 				isSecondRow = false;
 				isSecondColumn = true;
+				/*
+				 * if (isOutOfRangeMessageVisible) {
+					isOutOfRangeMessageVisible = false;
+				}
+				 */
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
 				this.uncover(secondColumn, secondRow);
@@ -450,6 +457,9 @@ public class Board {
 		this.isOutOfRangeMessageVisible = isOutOfRangeMessageVisible;
 	}
 
+	public boolean noMessagesAreVisible() {
+		return !isCongratulationsMessageVisible && !isYouFoundMatchMessageVisible && !isHardLuckMessageVisible;
+	}
 	private void swap(int iterations) {
 		int tempNumber;
 		Card tempCard;

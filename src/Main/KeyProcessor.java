@@ -58,37 +58,43 @@ public class KeyProcessor{
 			break;
 			
 		case '5':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
 			
 		case '6':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
 			
 		case '7':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
 			
 		case '8':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
 			
 		case '9':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
 			
 		case '0':
-			if (numKeysEnabled) {
+			if (numKeysEnabled && Main.board.noMessagesAreVisible() && !Main.titleScreen.getVisibility()) {
+				Main.board.setFacingUpAlreadyMessageVisible(false);
 				Main.board.setOutOfRangeMessageVisible(true);
 			}
 			break;
@@ -106,7 +112,7 @@ public class KeyProcessor{
 					if (Main.board.isHardLuckMessageVisible()) {
 						Main.board.coverBoth(Main.board.getFirstColumn(), Main.board.getFirstRow(), Main.board.getSecondColumn(), Main.board.getSecondRow());
 					}
-					Main.board.makeAllMessagesExceptCongratulationsDisappear();
+					Main.board.makeAllMessagesExceptCongratulationsAndOutOfRangeDisappear();
 					// throw back to first
 					Main.board.setEnterStage(false);
 					Main.board.setFirstQuestion(true);
