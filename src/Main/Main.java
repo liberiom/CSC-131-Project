@@ -48,12 +48,12 @@ public class Main{
 			ctrl.drawString(titleScreen.getRuleOneCoords().getX(), titleScreen.getRuleOneCoords().getY(), titleScreen.getRuleOne(), white);
 			ctrl.drawString(titleScreen.getRuleTwoCoords().getX(), titleScreen.getRuleTwoCoords().getY(), titleScreen.getRuleTwo(), white);
 			ctrl.drawString(titleScreen.getRuleThreeCoords().getX(), titleScreen.getRuleThreeCoords().getY(), titleScreen.getRuleThree(), white);
-			if (promptFrames < 30) {
+			if (promptFrames < 60) {
 				promptFrames++;
 				ctrl.drawString(titleScreen.getPromptContinueCoords().getX(), titleScreen.getPromptContinueCoords().getY(), titleScreen.getPromptContinue(), white);
 			} else {
 				promptFrames++;
-				if (promptFrames < 60) {
+				if (promptFrames >= 120) {
 					promptFrames = 0; // reset promptFrames
 				}
 			}
