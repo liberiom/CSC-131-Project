@@ -34,6 +34,18 @@ public class Board {
 	private boolean isSecondQuestion;
 	private boolean isSecondRow;
 	private boolean isSecondColumn;
+	private boolean isEnterStage;
+	private int firstRow = -1;
+	private int firstColumn = -1;
+	private int secondRow = -1;
+	private int secondColumn = -1;
+	private boolean isYouFoundMatchMessageVisible;
+	private boolean isHardLuckMessageVisible;
+	private boolean isCongratulationsMessageVisible;
+	private boolean isFacingUpAlreadyMessageVisible;
+	private boolean isPlayAgainMessageVisible;
+	private boolean isOutOfRangeMessageVisible;
+	
 	public int getFirstRow() {
 		return firstRow;
 	}
@@ -66,17 +78,6 @@ public class Board {
 		this.secondColumn = secondColumn;
 	}
 
-	private boolean isEnterStage;
-	private int firstRow = -1;
-	private int firstColumn = -1;
-	private int secondRow = -1;
-	private int secondColumn = -1;
-	private boolean isYouFoundMatchMessageVisible;
-	private boolean isHardLuckMessageVisible;
-	private boolean isCongratulationsMessageVisible;
-	private boolean isFacingUpAlreadyMessageVisible;
-	private boolean isPlayAgainMessageVisible;
-	
 	public boolean isPlayAgainMessageVisible() {
 		return isPlayAgainMessageVisible;
 	}
@@ -119,12 +120,14 @@ public class Board {
 
 	public void recordAnswerAndMoveOn(int answer) {
 		if (isFirstQuestion && isFirstColumn) {
+			isOutOfRangeMessageVisible = false;
 			firstColumn = answer;
 			// Go to next part
 			isFirstColumn = false;
 			isFirstRow = true;
 			isFacingUpAlreadyMessageVisible = false;
 		} else if (isFirstQuestion && isFirstRow) {
+			isOutOfRangeMessageVisible = false;
 			firstRow = answer;
 			// If card is already up go back to the last part
 			if (this.cards[firstColumn - 1][firstRow - 1].isShowingNumber()) {
@@ -140,12 +143,14 @@ public class Board {
 			}
 			// else go to the next part
 		} else if (isSecondQuestion && isSecondColumn) {
+			isOutOfRangeMessageVisible = false;
 			secondColumn = answer;
 			// Go to next part
 			isSecondColumn = false;
 			isSecondRow = true;
 			isFacingUpAlreadyMessageVisible = false; 
 		} else if (isSecondQuestion && isSecondRow) {
+			isOutOfRangeMessageVisible = false;
 			secondRow = answer;
 			// If card is already up go back to the last part
 			if (this.cards[secondColumn - 1][secondRow - 1].isShowingNumber()) {
@@ -164,6 +169,7 @@ public class Board {
 	
 	private void forceEnterStageIfNecessary() {
 		if (isEnterStage) {
+			isOutOfRangeMessageVisible = false;
 			KeyProcessor.enterKeyEnabled = true;
 			KeyProcessor.numKeysEnabled = false;
 			// show messsages here
@@ -430,9 +436,18 @@ public class Board {
 				this.counter++;
 			}
 		}
-		this.swap(rng.nextInt(10) + 40); // Swap 40-50 times
+		this.swap(rng.nextInt(10) + 40); // Swap 40-50 times 
+		counter = 1; // VERY IMPORTANT TO SETUP GAME BOARD PROPERLY
 	}
 	
+	public boolean isOutOfRangeMessageVisible() {
+		return isOutOfRangeMessageVisible;
+	}
+
+	public void setOutOfRangeMessageVisible(boolean isOutOfRangeMessageVisible) {
+		this.isOutOfRangeMessageVisible = isOutOfRangeMessageVisible;
+	}
+
 	private void swap(int iterations) {
 		int tempNumber;
 		Card tempCard;

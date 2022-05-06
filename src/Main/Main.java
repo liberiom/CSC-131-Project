@@ -153,9 +153,13 @@ public class Main{
 		if (board.isCongratulationsMessageVisible()) {
 			ctrl.drawString(509, 92, "Congratulations! You found all the matches! Press Enter to continue", white);
 		}
+
+		if (board.isOutOfRangeMessageVisible()) {
+			ctrl.drawString(509, 92, "That number is out of range. Enter a number between 1 and 4", white);
+		}
 		
 		if (board.isPlayAgainMessageVisible()) {
-			ctrl.drawString(509, 92, "Would you like to play again? Type Y to play again or N to quit", white);
+			ctrl.drawString(1009, 92, "Would you like to play again? Type Y to play again or N to quit", white);
 		}
 	}
 	

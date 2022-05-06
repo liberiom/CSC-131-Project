@@ -58,27 +58,39 @@ public class KeyProcessor{
 			break;
 			
 		case '5':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 			
 		case '6':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 			
 		case '7':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 			
 		case '8':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 			
 		case '9':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 			
 		case '0':
-			
+			if (numKeysEnabled) {
+				Main.board.setOutOfRangeMessageVisible(true);
+			}
 			break;
 		case '=':
 			if (enterKeyEnabled) {
