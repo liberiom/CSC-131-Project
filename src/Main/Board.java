@@ -101,13 +101,6 @@ public class Board {
 	}
 
 	public void recordAnswerAndMoveOn(int answer) {
-		System.out.println("1st Question: " + isFirstQuestion);
-		System.out.println(isFirstColumn);
-		System.out.println(isFirstRow);
-		System.out.println("2nd Question: " + isSecondQuestion);
-		System.out.println(isSecondColumn);
-		System.out.println(isSecondRow);
-		
 		if (isFirstQuestion && isFirstColumn) {
 			firstColumn = answer;
 			// Go to next part
@@ -119,6 +112,7 @@ public class Board {
 			if (this.cards[firstColumn - 1][firstRow - 1].isShowingNumber()) {
 				isFirstRow = false;
 				isFirstColumn = true;
+				isFacingUpAlreadyMessageVisible = true;
 			} else {
 				this.uncover(firstColumn, firstRow);
 				isFirstQuestion = false;
@@ -138,6 +132,7 @@ public class Board {
 			if (this.cards[secondColumn - 1][secondRow - 1].isShowingNumber()) {
 				isSecondRow = false;
 				isSecondColumn = true;
+				isFacingUpAlreadyMessageVisible = true;
 			} else {
 				this.uncover(secondColumn, secondRow);
 				isEnterStage = true;

@@ -31,6 +31,9 @@ public class KeyProcessor{
 			if (numKeysEnabled) {
 				Main.board.recordAnswerAndMoveOn(1);
 				currentNumber = 1;
+				if (Main.board.isFacingUpAlreadyMessageVisible()) {
+					Main.board.setFacingUpAlreadyMessageVisible(false);
+				}
 			}
 			break;
 		
@@ -38,6 +41,9 @@ public class KeyProcessor{
 			if (numKeysEnabled) {
 				Main.board.recordAnswerAndMoveOn(2);
 				currentNumber = 2;
+				if (Main.board.isFacingUpAlreadyMessageVisible()) {
+					Main.board.setFacingUpAlreadyMessageVisible(false);
+				}
 			}
 			break;
 			
@@ -45,6 +51,9 @@ public class KeyProcessor{
 			if (numKeysEnabled) {
 				Main.board.recordAnswerAndMoveOn(3);
 				currentNumber = 3;
+				if (Main.board.isFacingUpAlreadyMessageVisible()) {
+					Main.board.setFacingUpAlreadyMessageVisible(false);
+				}
 			}
 			break;
 			
@@ -52,6 +61,9 @@ public class KeyProcessor{
 			if (numKeysEnabled) {
 				Main.board.recordAnswerAndMoveOn(4);
 				currentNumber = 4;
+				if (Main.board.isFacingUpAlreadyMessageVisible()) {
+					Main.board.setFacingUpAlreadyMessageVisible(false);
+				}
 			}
 			break;
 			
