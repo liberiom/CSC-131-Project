@@ -127,12 +127,14 @@ public class Board {
 			isFirstRow = true;
 			isFacingUpAlreadyMessageVisible = false;
 		} else if (isFirstQuestion && isFirstRow) {
-			isOutOfRangeMessageVisible = false;
 			firstRow = answer;
 			// If card is already up go back to the last part
 			if (this.cards[firstColumn - 1][firstRow - 1].isShowingNumber()) {
 				isFirstRow = false;
 				isFirstColumn = true;
+				if (isOutOfRangeMessageVisible) {
+					isOutOfRangeMessageVisible = false;
+				}
 				isFacingUpAlreadyMessageVisible = true;
 			} else {
 				this.uncover(firstColumn, firstRow);
