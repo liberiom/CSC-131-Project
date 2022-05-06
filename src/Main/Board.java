@@ -15,7 +15,7 @@ public class Board {
 	private Vector2D columnNumberThree;
 	private Vector2D rowNumberFour;
 	private Vector2D columnNumberFour;
-	private final int ROW_SPACING = 250;
+	private final int ROW_SPACING = 225;
 	private final int COLUMN_SPACING = 100;
 	private boolean isVisible;
 	
