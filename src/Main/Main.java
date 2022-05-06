@@ -24,6 +24,7 @@ public class Main{
 	public static TitleScreen titleScreen; 
 	public static Board board;
 	private static Color white = new Color(255, 255, 255);
+	private static int promptFrames;
 	
 	// End Static fields...
 	
@@ -36,6 +37,7 @@ public class Main{
 	public static void start(){
 		titleScreen = new TitleScreen();
 		board = new Board();
+		promptFrames = 0;
 	} 
 	
 	/* This is your access to the "game loop" (It is a "callback" method from the Control class (do NOT modify that class!))*/
@@ -46,7 +48,12 @@ public class Main{
 			ctrl.drawString(titleScreen.getRuleOneCoords().getX(), titleScreen.getRuleOneCoords().getY(), titleScreen.getRuleOne(), white);
 			ctrl.drawString(titleScreen.getRuleTwoCoords().getX(), titleScreen.getRuleTwoCoords().getY(), titleScreen.getRuleTwo(), white);
 			ctrl.drawString(titleScreen.getRuleThreeCoords().getX(), titleScreen.getRuleThreeCoords().getY(), titleScreen.getRuleThree(), white);
-			ctrl.drawString(titleScreen.getPromptContinueCoords().getX(), titleScreen.getPromptContinueCoords().getY(), titleScreen.getPromptContinue(), white);
+			if (promptFrames < 5) {
+				promptFrames++;
+			} else {
+				ctrl.drawString(titleScreen.getPromptContinueCoords().getX(), titleScreen.getPromptContinueCoords().getY(), titleScreen.getPromptContinue(), white);
+				promptFrames = 0;
+			}
 		}
 		
 		if (board.getVisibility()) {
