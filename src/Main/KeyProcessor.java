@@ -27,30 +27,18 @@ public class KeyProcessor{
 			break;
 		case '1':
 			Main.board.recordAnswerAndMoveOn(1);
-			if (Main.board.isAMessageShowing()) {	
-				Main.board.makeAllMessagesDisappear();
-			}
 			break;
 		
 		case '2':
 			Main.board.recordAnswerAndMoveOn(2);
-			if (Main.board.isAMessageShowing()) {	
-				Main.board.makeAllMessagesDisappear();
-			}
 			break;
 			
 		case '3':	
 			Main.board.recordAnswerAndMoveOn(3);
-			if (Main.board.isAMessageShowing()) {	
-				Main.board.makeAllMessagesDisappear();
-			}
 			break;
 			
 		case '4':
 			Main.board.recordAnswerAndMoveOn(4);
-			if (Main.board.isAMessageShowing()) {	
-				Main.board.makeAllMessagesDisappear();
-			}
 			break;
 			
 		case '5':
@@ -85,6 +73,8 @@ public class KeyProcessor{
 					Main.board.setFirstQuestion(true); // Prevents the question from popping up in the title screen
 					enterKeyEnabled = false;
 					Main.board.shuffle();
+				} else {
+					
 				}
 			}
 			break;

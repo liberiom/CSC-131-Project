@@ -34,15 +34,24 @@ public class Board {
 	private boolean isSecondQuestion;
 	private boolean isSecondRow;
 	private boolean isSecondColumn;
-	private int firstRow;
-	private int firstColumn;
-	private int secondRow;
-	private int secondColumn;
+	private int firstRow = -1;
+	private int firstColumn = -1;
+	private int secondRow = -1;
+	private int secondColumn = -1;
 	private boolean isYouFoundMatchMessageVisible;
 	private boolean isHardLuckMessageVisible;
 	private boolean isCongratulationsMessageVisible;
 	private boolean isFacingUpAlreadyMessageVisible;
+	private boolean enterKeyPressed = false;
 	
+	public boolean isEnterKeyPressed() {
+		return enterKeyPressed;
+	}
+
+	public void setEnterKeyPressed(boolean enterKeyPressed) {
+		this.enterKeyPressed = enterKeyPressed;
+	}
+
 	public void makeAllMessagesDisappear() {
 		this.isYouFoundMatchMessageVisible = false;
 		this.isHardLuckMessageVisible = false;
@@ -55,11 +64,14 @@ public class Board {
 	}
 
 	public void setFacingUpAlreadyMessageVisible(boolean isFacingUpAlreadyMessageVisible) {
-		this.isFacingUpAlreadyMessageVisible = isFacingUpAlreadyMessageVisible;
+		this.isFacingUpAlreadyMessageVisible = isFacingUpAlreadyMessageVisible; 
 	}
 
 	public void recordAnswerAndMoveOn(int answer) {
 		if (isFirstQuestion && isFirstRow) {
+			if ((firstRow != -1) && (firstColumn != -1) && (secondRow != -1) && (secondColumn != -1)) {
+				this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
+			}
 			firstRow = answer;
 			isFirstRow = false;
 			isFirstColumn = true;
@@ -78,7 +90,7 @@ public class Board {
 			secondRow = answer;
 			isSecondRow = false;
 			isSecondColumn = true;
-		} else if (isSecondQuestion & isSecondColumn) {
+		} else if (isSecondQuestion && isSecondColumn) {
 			secondColumn = answer;
 			if (this.alreadyFacingUp(secondRow, secondColumn)) {
 				isFacingUpAlreadyMessageVisible = true;
@@ -95,7 +107,6 @@ public class Board {
 						isYouFoundMatchMessageVisible = true;
 					} 
 				} else {
-					this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
 					isHardLuckMessageVisible = true; 
 				}
 				// reset first and second rows and columns
