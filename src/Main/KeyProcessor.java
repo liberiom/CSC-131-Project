@@ -9,9 +9,9 @@ public class KeyProcessor{
 	// Static Fields
 	private static char last = ' ';			// For debouncing purposes
 	private static stopWatchX sw = new stopWatchX(200);
-	public static boolean enterKeyEnabled;
+	public static boolean enterKeyEnabled = true;
 	private static int currentNumber = -1;
-	public static boolean numKeysEnabled = true;
+	public static boolean numKeysEnabled = false;
 	
 	// Static Method(s)
 	public static void processKey(char key){
@@ -87,6 +87,7 @@ public class KeyProcessor{
 					Main.board.setFirstQuestion(true); // Prevents the question from popping up in the title screen
 					Main.board.setFirstColumn(true);
 					enterKeyEnabled = false;
+					numKeysEnabled = true;
 					Main.board.shuffle();
 				} else { // Responsible for throwing the user back to the first part
 					if (Main.board.isHardLuckMessageVisible()) {
