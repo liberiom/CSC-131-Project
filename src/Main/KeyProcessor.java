@@ -10,6 +10,7 @@ public class KeyProcessor{
 	private static char last = ' ';			// For debouncing purposes
 	private static stopWatchX sw = new stopWatchX(200);
 	public static boolean enterKeyEnabled;
+	private static int currentNumber = -1;
 	
 	// Static Method(s)
 	public static void processKey(char key){
@@ -27,18 +28,22 @@ public class KeyProcessor{
 			break;
 		case '1':
 			Main.board.recordAnswerAndMoveOn(1);
+			currentNumber = 1;
 			break;
 		
 		case '2':
 			Main.board.recordAnswerAndMoveOn(2);
+			currentNumber = 2;
 			break;
 			
 		case '3':	
 			Main.board.recordAnswerAndMoveOn(3);
+			currentNumber = 3;
 			break;
 			
 		case '4':
 			Main.board.recordAnswerAndMoveOn(4);
+			currentNumber = 4;
 			break;
 			
 		case '5':
@@ -74,7 +79,8 @@ public class KeyProcessor{
 					enterKeyEnabled = false;
 					Main.board.shuffle();
 				} else {
-					
+					Main.board.setEnterKeyPressed(true);
+					Main.board.recordAnswerAndMoveOn(currentNumber);
 				}
 			}
 			break;

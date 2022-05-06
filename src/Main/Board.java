@@ -71,6 +71,11 @@ public class Board {
 		if (isFirstQuestion && isFirstRow) {
 			if ((firstRow != -1) && (firstColumn != -1) && (secondRow != -1) && (secondColumn != -1)) {
 				this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
+				// reset first and second rows and columns
+				firstRow = -1;
+				secondRow = -1;
+				firstColumn = -1;
+				secondColumn = -1;
 			}
 			firstRow = answer;
 			isFirstRow = false;
@@ -93,13 +98,9 @@ public class Board {
 		} else if (isSecondQuestion && isSecondColumn) {
 			secondColumn = answer;
 			if (this.alreadyFacingUp(secondRow, secondColumn)) {
-				isFacingUpAlreadyMessageVisible = true;
+				isFacingUpAlreadyMessageVisible = true; 
 			} else {
-				isSecondColumn = false;
-				isSecondQuestion = false;
-				isFirstQuestion = true;
-				isFirstRow = true;
-				this.uncover(secondRow, secondColumn);
+				this.uncover(secondRow, secondColumn); 
 				if (this.match(firstRow, firstColumn, secondRow, secondColumn)) {
 					if (this.didPlayerWinGame()) {
 						isCongratulationsMessageVisible = true;
@@ -109,11 +110,12 @@ public class Board {
 				} else {
 					isHardLuckMessageVisible = true; 
 				}
-				// reset first and second rows and columns
-				firstRow = -1;
-				secondRow = -1;
-				firstColumn = -1;
-				secondColumn = -1;
+				if (enterKeyPressed) {
+					isSecondColumn = false;
+					isSecondQuestion = false;
+					isFirstQuestion = true;
+					isFirstRow = true;
+				}
 			}
 		} 
 	}
