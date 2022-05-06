@@ -98,6 +98,7 @@ public class KeyProcessor{
 					Main.board.setFirstQuestion(true);
 					Main.board.setFirstColumn(true);
 					Main.board.setSecondColumn(false);
+					Main.board.setSecondRow(false); // EXTREMELY IMPORTANT!!!
 					// set the keys back to normal!
 					numKeysEnabled = true;
 					enterKeyEnabled = false;
