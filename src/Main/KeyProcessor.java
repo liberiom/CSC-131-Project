@@ -81,7 +81,7 @@ public class KeyProcessor{
 				} else {
 					Main.board.makeAllMessagesDisappear();
 					Main.board.setEnterKeyPressed(true);
-					Main.board.recordAnswerAndMoveOn(currentNumber);
+					Main.board.recordAnswerAndMoveOn(currentNumber); 
 				}
 			}
 			break;

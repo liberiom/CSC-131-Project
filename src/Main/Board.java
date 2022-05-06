@@ -69,7 +69,8 @@ public class Board {
 
 	public void recordAnswerAndMoveOn(int answer) {
 		if (isFirstQuestion && isFirstRow) {
-			if ((firstRow != -1) && (firstColumn != -1) && (secondRow != -1) && (secondColumn != -1)) {
+			/*
+			 * if ((firstRow != -1) && (firstColumn != -1) && (secondRow != -1) && (secondColumn != -1)) {
 				this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
 				// reset first and second rows and columns
 				firstRow = -1;
@@ -77,6 +78,7 @@ public class Board {
 				firstColumn = -1;
 				secondColumn = -1;
 			}
+			 */
 			firstRow = answer;
 			isFirstRow = false;
 			isFirstColumn = true;
@@ -119,6 +121,13 @@ public class Board {
 					if (!enterKeyPressed) {
 						isHardLuckMessageVisible = true; 
 						KeyProcessor.enterKeyEnabled = true;
+					} else {
+						this.coverBoth(firstRow, firstColumn, secondRow, secondColumn);
+						// reset first and second rows and columns
+						firstRow = -1;
+						secondRow = -1;
+						firstColumn = -1;
+						secondColumn = -1;
 					}
 				}
 			}
