@@ -169,7 +169,7 @@ public class Main{
 		}
 		
 		if (board.isPlayAgainMessageVisible()) {
-			ctrl.drawString(609, 572, "Your score: " + board.getScore(), white);
+			ctrl.drawString(509, 392, "Your score: " + board.getScore(), white);
 			ctrl.drawString(509, 592, "Would you like to play again? Type Y to play again or N to quit", white);
 		}
 	}
