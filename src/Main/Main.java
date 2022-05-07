@@ -149,7 +149,7 @@ public class Main{
 		}
 		
 		if (board.isYouFoundMatchMessageVisible()) {
-			ctrl.drawString(739, 102, "Hey! You found a match! Good job! Press Enter to continue", white);
+			ctrl.drawString(639, 102, "Hey! You found a match! Good job! Press Enter to continue", white);
 		} 	
 		
 		if (board.isHardLuckMessageVisible()) {
@@ -161,11 +161,11 @@ public class Main{
 		}
 		
 		if (board.isCongratulationsMessageVisible()) {
-			ctrl.drawString(739, 102, "Congratulations! You found all the matches! You did it in " + board.getTurns() + " turns." + " Press Enter to continue", white);
+			ctrl.drawString(539, 102, "Congratulations! You found all the matches! You did it in " + board.getTurns() + " turns." + " Press Enter to continue", white);
 		}
 
 		if (board.isOutOfRangeMessageVisible()) {
-			ctrl.drawString(739, 102, "That number is out of range. Enter a number between 1 and 4", white);
+			ctrl.drawString(639, 102, "That number is out of range. Enter a number between 1 and 4", white);
 		}
 		
 		if (board.isPlayAgainMessageVisible()) {
