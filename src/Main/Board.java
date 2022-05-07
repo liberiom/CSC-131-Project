@@ -210,7 +210,7 @@ public class Board {
 					turns++;
 				} else {
 					isYouFoundMatchMessageVisible = true;
-					score += 2;
+					score += 5;
 					turns++;
 				}
 				// no need to cover up here, matches
