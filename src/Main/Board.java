@@ -26,6 +26,10 @@ public class Board {
 	private Card[][] cards;
 	private static Random rng;
 	private int counter = 1;
+	private int score = 0;
+	private int turns = 0;
+	
+	
 	
 	// Question-related stuff
 	private boolean isFirstQuestion;
@@ -45,6 +49,24 @@ public class Board {
 	private boolean isFacingUpAlreadyMessageVisible;
 	private boolean isPlayAgainMessageVisible;
 	private boolean isOutOfRangeMessageVisible;
+	
+	public int getTurns() {
+		return turns;
+	}
+
+	public void setTurns(int turns) {
+		this.turns = turns;
+	}
+
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 	
 	public int getFirstRow() {
 		return firstRow;
@@ -185,12 +207,19 @@ public class Board {
 			if (this.match(firstColumn, firstRow, secondColumn, secondRow)) {
 				if (this.didPlayerWinGame()) {
 					isCongratulationsMessageVisible = true;
+					turns++;
 				} else {
 					isYouFoundMatchMessageVisible = true;
+					score += 2;
+					turns++;
 				}
 				// no need to cover up here, matches
 			} else {
 				isHardLuckMessageVisible = true;
+				if (score > 0) {
+					score--;
+				}
+				turns++;
 			}
 		}
 	}

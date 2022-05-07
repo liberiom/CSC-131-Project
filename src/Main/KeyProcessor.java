@@ -156,6 +156,7 @@ public class KeyProcessor{
 		
 		case 'y':
 			if (yKeyEnabled) {
+				Main.board.setScore(0); // reset score
 				Main.board.setPlayAgainMessageVisible(false);
 				Main.titleScreen.setVisibility(true);
 				enterKeyEnabled = true;

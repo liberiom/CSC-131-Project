@@ -137,39 +137,40 @@ public class Main{
 		}
 		
 		if (board.isFirstQuestion() && board.isFirstRow()) {
-			ctrl.drawString(519, 833, "What is the First Card you would like to see? Please type the row number", white);
+			ctrl.drawString(609, 783, "What is the First Card you would like to see? Please type the row number", white);
 		} else if (board.isFirstQuestion() && board.isFirstColumn()) {
-			ctrl.drawString(519, 833, "What is the First Card you would like to see? Please type the column number", white);
+			ctrl.drawString(609, 783, "What is the First Card you would like to see? Please type the column number", white);
 		}
 		
 		if (board.isSecondQuestion() && board.isSecondRow()) {
-			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the row number", white);
+			ctrl.drawString(609, 783, "What is the Second Card you would like to see? Please type the row number", white);
 		} else if (board.isSecondQuestion() && board.isSecondColumn()) {
-			ctrl.drawString(519, 833, "What is the Second Card you would like to see? Please type the column number", white);
+			ctrl.drawString(609, 783, "What is the Second Card you would like to see? Please type the column number", white);
 		}
 		
 		if (board.isYouFoundMatchMessageVisible()) {
-			ctrl.drawString(509, 92, "Hey! You found a match! Good job! Press Enter to continue", white);
+			ctrl.drawString(739, 102, "Hey! You found a match! Good job! Press Enter to continue", white);
 		} 	
 		
 		if (board.isHardLuckMessageVisible()) {
-			ctrl.drawString(509, 92, "Hard luck! Not a match! Press Enter to continue", white);
+			ctrl.drawString(739, 102, "Hard luck! Not a match! Press Enter to continue", white);
 		}
 		
 		if (board.isFacingUpAlreadyMessageVisible()) {
-			ctrl.drawString(509, 92, "That Card is already facing up. Please try again!", white);
+			ctrl.drawString(739, 102, "That Card is already facing up. Please try again!", white);
 		}
 		
 		if (board.isCongratulationsMessageVisible()) {
-			ctrl.drawString(509, 92, "Congratulations! You found all the matches! Press Enter to continue", white);
+			ctrl.drawString(739, 102, "Congratulations! You found all the matches! You did it in " + board.getTurns() + " turns." + " Press Enter to continue", white);
 		}
 
 		if (board.isOutOfRangeMessageVisible()) {
-			ctrl.drawString(509, 92, "That number is out of range. Enter a number between 1 and 4", white);
+			ctrl.drawString(739, 102, "That number is out of range. Enter a number between 1 and 4", white);
 		}
 		
 		if (board.isPlayAgainMessageVisible()) {
-			ctrl.drawString(1009, 92, "Would you like to play again? Type Y to play again or N to quit", white);
+			ctrl.drawString(609, 572, "Your score: " + board.getScore(), white);
+			ctrl.drawString(509, 592, "Would you like to play again? Type Y to play again or N to quit", white);
 		}
 	}
 	
