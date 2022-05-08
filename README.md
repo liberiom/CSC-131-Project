@@ -1,4 +1,4 @@
-# CSC-131-Project
+# The Syntax Errors' CSC-131-Project - Memory Game
 
 This is the CSC 131 Project made by The Syntax Errors. It was planned and created throughout the Spring 2022 semester at California State University, Sacramento.
 
