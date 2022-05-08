@@ -9,4 +9,4 @@ This is the CSC 131 Project made by The Syntax Errors. It was planned and create
 3. You can only select between 1 to 4 for both the row and the column!
 
 # How to Run:
-Download a Zip/Clone the repository, then run either MemoryGame.jar or MemoryGame.exe
+Download a Zip/Clone the repository, extract it, then run either MemoryGame.jar or MemoryGame.exe
