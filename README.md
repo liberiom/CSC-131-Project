@@ -8,3 +8,5 @@ This is the CSC 131 Project made by The Syntax Errors. It was planned and create
 2. The goal of the game is to find 2 pairs of the same number.
 3. You can only select between 1 to 4 for both the row and the column!
 
+# How to Run:
+Download a Zip/Clone the repository, then run either MemoryGame.jar or MemoryGame.exe
